@@ -27,7 +27,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="rbc-container">
+    <div className="rbc-container"
+        style = {{paddingBottom: "50px"}}>
+
       {/* Left Side */}
       <div className="rbc-left-side">
         <h1>RBC</h1>
@@ -41,15 +43,14 @@ const App: React.FC = () => {
         <p>
 
         Fine-tuned a binary multi-class <strong>BERT model </strong> to classify messages across six distinct
-        categories of abuse + <strong>LLM validation (Meta Llama 3.1)</strong> for contextual refinement in the pipeline
+        categories of abuse + <strong>LLM validation (Meta Llama 3.1)</strong> for contextual refinement in the pipeline.
         </p>
 
         <h3>Model Optimization</h3>
         <p>
-          Utilized different model optimization, such as <strong>Optuna for Hyperparameter
+          Utilized model optimization, such as <strong>Optuna for Hyperparameter
           tuning </strong> and <strong>Elastic Weight Consolidation (EWC) </strong> to enhance stability. These efforts resulted
-          in an impressive F1 score of 0.98 and an AUC of 0.95, effectively reducing misclassification
-          rates by 91%.
+          in an impressive F1 score of 0.98 and an AUC of 0.95.
         </p>
 
         <h3>Catalyst Tech Expo Deployment</h3>
@@ -84,6 +85,7 @@ const App: React.FC = () => {
           />
           <div className="rbc-magnifier" style={magnifierStyle}>
             <img
+              className = "magnified-image"
               src={model}
               alt="AI Payment Solution"
               style={{

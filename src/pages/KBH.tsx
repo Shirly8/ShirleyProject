@@ -20,7 +20,7 @@ const Home: React.FC = () => {
       </div>
       <div className="kbh-right-side">
         <div className="kbh-top">
-          <img src={kbh}  className="kbh-image" />
+          <img src={kbh}  className="kbh-image2" />
         </div>
         <div className="kbh-middle">
           <h3 className="kbh-heading">Built for SEO optimization</h3>

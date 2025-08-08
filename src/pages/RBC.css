@@ -6,7 +6,7 @@
   min-height: 95vh;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 750px) {
   .rbc-container {
     flex-direction: row;
   }
@@ -98,19 +98,16 @@
   transform: scale(1.1);
 }
 
+
 /* Mobile Adjustments */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 750px) {
   .rbc-container {
     min-height: 100%;
-  }
-  .rbc-left-side,
-  .rbc-right-side {
-    flex: 0 0 100%; 
+    background-color: white;
+
   }
 
-  .img{
-    width: 20%;
-  }
+  
   .rbc-right-side {
     margin-top: 20px;
     max-width: 90%;
@@ -119,4 +116,11 @@
   .rbc-right-side .rbc-magnifier {
     display: none !important;
   }
+
+  .laptop-image{
+    display: none !important;
+
+}
+
+
 }

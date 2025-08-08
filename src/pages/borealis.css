@@ -1,7 +1,7 @@
 .borealis-container {
   display: flex;
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
   gap: 2rem;
   color: white;
   background-image: url('../../HomeAssets/bg2.png');
@@ -15,7 +15,6 @@
 .borealis-left {
   flex: 0.55;
   padding: 2% 5%;
-  overflow-y: auto;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -53,7 +52,9 @@
   padding: 2% 5%;
   overflow-y: auto;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
-  
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .borealis-right h2{
@@ -66,10 +67,45 @@
 .impact{
   border: 1px solid white;
   border-radius: 15%;
-  margin-bottom:30px;
+  width: 100%;
+  margin-top: -75px;
 }
 
 .borealis-right h3{
   font-size: 15px;
   padding: 10px;
+}
+
+@media (max-width: 750px) {
+  .borealis-container {
+    padding: 0% 15% 0% 13%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 120vh;
+  }
+
+  .borealis-left h1 {
+    font-size: 40px;
+  }
+
+  .borealis-right{
+    margin-top: -100px;
+  }
+
+  .impact {
+    border-radius: 15%;
+    margin-top: 0px;
+    height: 60%;
+    width: 90vw;
+    border: 1px solid white;
+  }
+
+  .headingandlogo{
+    display: flex;
+    justify-content: center;
+  }
+
+  
 }

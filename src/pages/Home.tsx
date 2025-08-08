@@ -4,12 +4,10 @@ import mail from '/HomeAssets/mail.png'
 import linkedin from '/HomeAssets/linkedin.png'
 import git from '/HomeAssets/git.png'
 import headshot from '/HomeAssets/headshot.png'
-import React, { useState } from "react";
+import { useState } from "react";
 import send from '/HomeAssets/send.png';
 import headshot2 from '/HomeAssets/headshot2.png'
 import Timeline from '../components/TimelineSlider'
-import intuitLogo from '/HomeAssets/intuit.png';
-import FunFact from '../pages/FunFacts';
 
 
 
@@ -26,18 +24,15 @@ function App() {
   
   {/*HOME PAGE*/}
   <div className="home-container">
-  <div className="intuit-logo">
-    <img src={intuitLogo} style = {{"width": "100px", "marginTop": "20px"}}/>
-  </div>
   <div className="left-side">
     <h1>
       The Shirley <span className="highlight">Project</span>
     </h1>
     <h3>Hello! I am Shirley Huang!</h3>
     <div className="icons">
-      <img src={mail} alt="Mail"/>
-      <img src={linkedin} alt="LinkedIn" />
-      <img src={git} alt="GitHub" />
+      <a href = "mailto:ShirleyHuang7@hotmail.com"><img src={mail} alt="Mail"/> </a> 
+      <a href = "https://www.linkedin.com/in/shirleyh11/"><img src={linkedin} alt="LinkedIn" /> </a>
+      <a href = "https://github.com/Shirly8"> <img src={git} alt="GitHub" /> </a>
     </div>
   </div>
 
@@ -59,14 +54,13 @@ function App() {
     <div
         className="right-side">
 
-      <h2>Product-Oriented Developer <span className="highlight">By Heart</span></h2>
+      <h2>Customer-Oriented Developer <span className="highlight">By Heart</span></h2>
         <h3 style = {{fontSize: "15px"}}>
-          <strong>📍 Hometown: Brampton, Ontario</strong> <br></br>
-          <strong>📚 Carleton University (2022-2026),  Schulich School of Business (2020-2022) </strong>  <br></br>
+          <strong>📍 Toronto, Ontario </strong> <br></br>
           <strong>💻 Computer Science + Business Minor</strong>  <br></br>
-          <strong> 🧑‍🏫 COMP 3005 (Database Management) Teacher's Assistant </strong> 
+          <strong>✏️ 3C's - Creative/Committed/Curious</strong>
           <br />
-        <div style = {{marginTop: "15px"}}> A highly creative and hands-on developer passionate about building user-centric solutions that blends functional design with cutting-edge AI to drive meaningful impact. </div>
+        <div style = {{marginTop: "15px"}}> Software Developer passionate about building user-centric solutions that merges innovative technology with exceptional experience. </div>
         </h3>
   
 
@@ -97,41 +91,19 @@ function App() {
           <Timeline/>
       </div>
 
-      <div>
-        <FunFact/>
-      </div>
-
 
 
 
     <div className = "container2">
-    <div style={{
-        position: "relative", 
-        width: "100%", 
-        height: "100px",
-        paddingTop: "56.2500%", 
-        paddingBottom: 0, 
-        marginTop: "1.6em", 
-        marginBottom: "0.9em", 
-        overflow: "hidden", 
-        borderRadius: "0px", 
-        willChange: "transform"
-    }}>
-      
-  <iframe loading="lazy" style={{
-      position: "absolute", 
-      width: "100%", 
-      height: "100%", 
-      top: 0, 
-      left: 0, 
-      border: "none", 
-      padding: 0,
-      margin: 0
-
-    }}
-    src="https://www.canva.com/design/DAGFPbHd8vU/OOI0WAeYvV7EdlEv0J_FPA/view?embed">
+    
+<div className="iframe-wrapper">
+  <iframe
+    loading="lazy"
+    src="https://www.canva.com/design/DAGFPbHd8vU/OOI0WAeYvV7EdlEv0J_FPA/view?embed"
+    className="canva-embed">
   </iframe>
 </div>
+
       </div>
 
       
@@ -163,9 +135,9 @@ function App() {
 
           </div>
         )}
-          <button>Let's Connect</button>
-          <button>GitHub</button>
-        </div>
+         <a className = "buttons" href = "https://www.linkedin.com/in/shirleyh11/edit/forms/next-action/after-connect-update-profile/"> <button className = "buttons">Let's Connect</button> </a>
+          <a  className = "buttons"  href = "https://github.com/Shirly8"> <button>GitHub</button> </a>
+          </div>
         
         <div className="footer-section">
           <h3>Shirley Huang</h3>
@@ -179,7 +151,6 @@ function App() {
 
       </div>
 
-      
       
 
     </>

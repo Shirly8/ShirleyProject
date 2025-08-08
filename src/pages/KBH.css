@@ -44,7 +44,7 @@
 }
 
 
-.kbh-image {
+.kbh-image, .kbh-image2{
   max-width: 80%;
   height: auto;
   border-radius: 8px;
@@ -87,4 +87,17 @@
   .kbh-right-side {
     flex: 1 1 100%;
   }
+
+
+
+  .kbh-image2 {
+    display:none;
+  }
+
+  
+  .magnified-image {
+    width: 50%;
+  }
+  
 }
+  

@@ -87,7 +87,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .left-side,
   .right-side {
     width: 100%;

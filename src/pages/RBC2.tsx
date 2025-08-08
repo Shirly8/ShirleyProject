@@ -27,8 +27,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="rbc-container">
-      {/* Left Side */}
+    <div className="rbc-container" style = {{paddingBottom: "30px"}}>
+        {/* Left Side */}
       <div className="rbc-left-side">
         <h1>RBC</h1>
         <h2>2023 - Workforce Management (WFM) SharePoint</h2>
@@ -37,7 +37,9 @@ const App: React.FC = () => {
         </p>
 
         <div className = "image">
-          <img src = {shift}
+          <img 
+          className = "laptop-image"
+          src = {shift}
           style = {{
             width: "90%",
             padding: "5%"

@@ -1,6 +1,5 @@
 import './Borealis.css';
 import logo from '../../WorkAssets/borealis.svg'
-import swagger from '../../WorkAssets/swagger.svg'
 
 const App: React.FC = () => {
 
@@ -19,30 +18,30 @@ const App: React.FC = () => {
           Worked on the  AI Trust Platform that featured 3 microservice: 
         </p>
 
-        <h3>PII Detection – Scalable Asynchronous Processing</h3>
+        <h3>Personal Identifiable Identity (PII) Detection</h3>
         <p>
-        <li>Built a distributed task queue with Celery and parallelized PII detection via Apache Airflow DAGs.</li>
+        <li>Developed distributed task queue and parallelized PII detection</li>
         <li>Integrated Microsoft Presidio for NER-based PII detection & redaction.</li>
         </p>
 
         <h3>Synthetic Data Generation</h3>
         <p>
-        <li>Developed a GAN-based pipeline to generate realistic synthetic customer data.</li>
+        <li>Developed generative adversarial network (GAN) pipeline to generate synthetic customer data</li>
         <li>Applied pandas & regex masking for dataset anonymization.</li>
         </p>
 
 
         <h3>Job Manager – Database & API Optimization</h3>
         <p>
-        <li>Designed SQL schema and implemented CRUD operations with Flask SQLAlchemy.</li>
-          <li>Modularized APIs with Flask Blueprint and documented via Swagger UI.</li>
-          <li>Optimized file handling with Redis caching & Amazon S3.</li>
+        <li>Designed SQL schema and implemented CRUD operations</li>
+          <li>Modularized APIs with Flask Blueprint and documented via Swagger UI</li>
+          <li>Streamlined file ingestion and retrieval in the data warehouse/data lake</li>
           </p>
       </div>
 
       {/* Right Side */}
       <div className="borealis-right">
-        <div className = "impact">
+        {/* <div className = "impact">
         <h2 className="impact-header">🚀 Impact</h2>
         <h3>
         <ul>
@@ -52,8 +51,25 @@ const App: React.FC = () => {
           <li>Hands-on experience with NLP, distributed systems, and AI ethics.</li>
         </ul>
         </h3>
+        </div> */}
+
+        <div className = "impact">
+        <h2 className="impact-header">Technologies</h2>
+        <h3 style = {{textAlign: "center"}}>
+        <ul>
+          <li>Python </li>
+          <li>Apache Airflow</li>
+          <li>SQLAlchemy</li>
+          <li>MariaDB [SQL]</li>
+          <li>Redis</li>
+          <li>Amazon S3</li>
+          <li>Docker</li>
+          <li>Apache Airflow</li>
+
+        </ul>
+        </h3>
+
         </div>
-        <img src = {swagger}></img>
       </div>
     </div>
   );
