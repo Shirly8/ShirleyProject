@@ -3,7 +3,7 @@
 .rbc-container {
   display: flex;
   flex-direction: column;
-  min-height: 95vh;
+  min-height: 100vh;
 }
 
 @media screen and (min-width: 750px) {
@@ -102,15 +102,17 @@
 /* Mobile Adjustments */
 @media screen and (max-width: 750px) {
   .rbc-container {
-    min-height: 100%;
     background-color: white;
-
+    padding-bottom: 50px;
+    
   }
 
-  
+  .rbc-left-side{
+    height: 100%;
+  }
+ 
   .rbc-right-side {
     margin-top: 20px;
-    max-width: 90%;
   }
 
   .rbc-right-side .rbc-magnifier {

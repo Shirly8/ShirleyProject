@@ -1,11 +1,15 @@
 .timeline-container {
   width: 100vw;
+  height: 99vh;
 }
 
 
 .arrow-button {
   border: none;
   margin-top: -5px;
+  background-color: transparent;
+  border: 1px solid #ed9ab0;
+  color: #ed9ab0;
 }
 
 .timeline-line {
@@ -63,11 +67,20 @@
 
 
 @media (max-width: 768px) {
+
+  .timeline-container { 
+    margin: 0;
+    margin-top: -100px;
+  }
   
   .arrow-button{
     border-color: #ed9ab0;
     border: 1px solid;
+
   }
+
+
+
   .timeline-line {
     position: relative;
     width: 100%;
@@ -97,13 +110,12 @@
     overflow-y: hidden;
   -webkit-overflow-scrolling: touch;    /* iOS momentum */
   scroll-snap-type: x mandatory;        /* snap to each slide */
-  height: 90%;
+  height: 100%;
   }
 
   .timeline-container {
     width: 100vw;
-    height: 90%;
-    margin-bottom: -100px;
+    height: 100%;
     
   }
 

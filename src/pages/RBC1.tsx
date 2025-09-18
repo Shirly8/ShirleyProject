@@ -85,7 +85,6 @@ const App: React.FC = () => {
           />
           <div className="rbc-magnifier" style={magnifierStyle}>
             <img
-              className = "magnified-image"
               src={model}
               alt="AI Payment Solution"
               style={{

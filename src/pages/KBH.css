@@ -1,7 +1,6 @@
 .kbh-container {
   display: flex;
   flex-wrap: wrap;
-  height: vh;
   background-color: #f8f9fa;
   color: #0c938b;
   background-color: black;
@@ -87,7 +86,6 @@
   .kbh-right-side {
     flex: 1 1 100%;
   }
-
 
 
   .kbh-image2 {
