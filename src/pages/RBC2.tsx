@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './RBC.css';
-import sharepoint from  '../../WorkAssets/sharepoint.png'
-import shift from '../../WorkAssets/shift.png'
 
 const App: React.FC = () => {
 
@@ -39,7 +37,7 @@ const App: React.FC = () => {
         <div className = "image">
           <img 
           className = "laptop-image"
-          src = {shift}
+          src = "/shift.png"
           style = {{
             width: "90%",
             padding: "5%"
@@ -78,7 +76,7 @@ const App: React.FC = () => {
           }}
         >
           <img
-            src={sharepoint}
+            src="/sharepoint.png"
             alt="AI Payment Solution"
             style = {{
               width: '70%',
@@ -86,7 +84,7 @@ const App: React.FC = () => {
           />
           <div className="rbc-magnifier" style={magnifierStyle}>
             <img
-              src={sharepoint}
+              src="/sharepoint.png"
               alt="AI Payment Solution"
               style={{
                 position: 'absolute',

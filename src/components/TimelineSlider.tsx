@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Timeline.css";
-import Slider from '../../WorkAssets/slider.svg';
 
 // Import page components
 import RBC1 from "../pages/RBC1";
@@ -101,7 +100,7 @@ const TimelineSlider: React.FC = () => {
         </div>
 
         <img
-          src={Slider}
+          src="/slider.svg"
           className="rocketship"
           ref={rocketshipRef}
         />

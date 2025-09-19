@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './RBC.css';
-import ai from '../../WorkAssets/ai.png'
-import model from '../../WorkAssets/model.png'
 
 const App: React.FC = () => {
 
@@ -68,7 +66,7 @@ const App: React.FC = () => {
               <li>Matplotlib</li>
               <li>spaCy</li></p>
           </div>
-          <img src={ai} alt="Technology illustration" />
+          <img src="/ai.png" alt="Technology illustration" />
         </div>
       </div>
 
@@ -80,12 +78,12 @@ const App: React.FC = () => {
           onMouseLeave={handleMouseLeave}
         >
           <img
-            src={model}
+            src="/model.png"
             alt="AI Payment Solution"
           />
           <div className="rbc-magnifier" style={magnifierStyle}>
             <img
-              src={model}
+              src="/model.png"
               alt="AI Payment Solution"
               style={{
                 position: 'absolute',

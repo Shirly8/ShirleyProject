@@ -13,16 +13,18 @@
   color: white;
   padding: 0% 7%;
   box-sizing: border-box;
-  height: 900px;
+  height: 1000px;
+  margin-top: -150px;
+  border: 1px solid red;
 }
 
 .container3 {
   display: flex;
   width: 100vw;
+  margin-top: 150px;
   color: white;
   padding: 0% 7% 20% 7%;
   box-sizing: border-box;
-  height: 100vh;
   background-image: url('../../HomeAssets/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -313,6 +315,7 @@ p {
     display: flex;
     flex-direction: column;
     height: 800px;
+
     padding: 10% 0px;
 
   }

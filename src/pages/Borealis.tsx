@@ -1,5 +1,4 @@
-import './Borealis.css';
-import logo from '../../WorkAssets/borealis.svg'
+import './borealis.css';
 
 const App: React.FC = () => {
 
@@ -9,7 +8,7 @@ const App: React.FC = () => {
       <div className="borealis-left">
         <div className = "headingandlogo">
         <h1>Borealis AI</h1>
-        <img src = {logo} style = {{width: "90px", marginTop: "-30px"}}></img>
+        <img src = "/borealis.svg" style = {{width: "90px", marginTop: "-30px"}}></img>
         </div>
 
         
