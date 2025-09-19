@@ -11,18 +11,18 @@ body {
   align-items: center;
   color: white;
   position: fixed;
-  width: 100%;
   top: 0;
+  right: 0;
   z-index: 9999;
-  padding: 15px 0;
+  padding: 15px 20px;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  padding-right: 100%;
-  gap: 50px;
-  margin-right: 100px;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li a {
@@ -75,11 +75,13 @@ body {
 @media (max-width: 768px) { 
   .top-bar {
     justify-content: center;
-    padding: 10px 0;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 15px;
   }
 
   .nav-links {
-    margin-right: 0;
     gap: 20px;
   }
 
