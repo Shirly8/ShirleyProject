@@ -8,16 +8,37 @@ import { useState } from "react";
 import send from '/HomeAssets/send.png';
 import headshot2 from '/HomeAssets/headshot2.png'
 import Timeline from '../components/TimelineSlider'
-
-
+import emailjs from '@emailjs/browser';
 
 function App() {
 
   const [showForm, setShowForm] = useState(false);
+  const [email, setEmail] = useState('');
+  const [body, setBody] = useState('');
+  const [showSent, setShowSent] = useState(false);
+  
 
   const handleTalkClick = () => {
     setShowForm(!showForm);
+    setShowSent(false);
   };
+
+  const handleSendClick = () => {
+    emailjs.send('service_n8egudu', 'template_f0esv7l', {
+      name: email,
+      email: email,
+      message: body,
+      title: 'Contact Form'
+    }, 'Bkzl1-q82jUL06M_y')
+    .then((result) => {
+      console.log('Email sent successfully!', result.text);
+      setShowSent(true);
+      setShowForm(false);
+    })
+    .catch((error) => {
+      console.log('Email failed:', error.text);
+    });
+  }
   
   return (
     <>   
@@ -123,18 +144,25 @@ function App() {
           <div className="form-section">
             <label>
               Email:
-              <input type="text" placeholder="Enter your Email Address" />
+              <input type="text" value = {email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your Email Address" />
             </label>
             <label>
               Body:
-              <textarea placeholder="Enter your message"></textarea>
+              <textarea value = {body} onChange={(e) => setBody(e.target.value)} placeholder="Enter your message"></textarea>
             </label>
             <div className="send-button-container">
-            <img src = {send} className="send-button"></img>
+            <img src = {send} className="send-button" onClick={handleSendClick}></img>
             </div>
 
           </div>
         )}
+
+        {showSent && (
+          <div className="sent-section">
+            <p style = {{fontSize: "13px"}}>Email sent successfully!</p>
+          </div>
+        )}
+
          <a className = "buttons" href = "https://www.linkedin.com/in/shirleyh11/edit/forms/next-action/after-connect-update-profile/"> <button className = "buttons">Let's Connect</button> </a>
           <a  className = "buttons"  href = "https://github.com/Shirly8"> <button>GitHub</button> </a>
           </div>

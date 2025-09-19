@@ -290,6 +290,11 @@ p {
   .container{
     display: flex;
     flex-direction: column;  
+    border: 2px solid orange;
+  }
+
+  .home-container{
+    margin-top: -75px;
   }
 
   .container3{
