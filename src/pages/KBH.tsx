@@ -1,7 +1,5 @@
 import React from "react";
 import "./KBH.css";
-import kbh from '../../WorkAssets/kbh.png'
-import kbH2 from '../../WorkAssets/kbh2.png'
 
 
 
@@ -10,7 +8,7 @@ const Home: React.FC = () => {
     <div className="kbh-container">
       <div className="kbh-left-side">
         <div className="kbh-top">
-          <img src={kbH2} alt="Kay Blair Hospice" className="kbh-image" />
+          <img src="/kbh2.png" alt="Kay Blair Hospice" className="kbh-image" />
         </div>
         <div className="kbh-bottom">
           <h1 className="kbh-title">Kay Blair Hospice</h1>
@@ -20,7 +18,7 @@ const Home: React.FC = () => {
       </div>
       <div className="kbh-right-side">
         <div className="kbh-top">
-          <img src={kbh}  className="kbh-image2" />
+          <img src="/kbh.png" className="kbh-image2" />
         </div>
         <div className="kbh-middle">
           <h3 className="kbh-heading">Built for SEO optimization</h3>
