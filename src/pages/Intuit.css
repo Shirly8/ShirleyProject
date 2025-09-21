@@ -1,0 +1,76 @@
+.intuit-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  gap: 2rem;
+  background-color: white;
+  padding: 2% 5%;
+  box-sizing: border-box;
+  color: #0075f2;
+  margin-top: -100px;
+  
+}
+
+.intuit-left-side {
+  flex: 0.4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 2rem;
+}
+
+.intuit-right-side {
+  flex: 0.6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intuit-heading {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  color: #0075f2;
+}
+
+.intuit-logo {
+  width: 70px;
+  height: auto;
+}
+
+.intuit-left-side h1 {
+  font-size: 4rem;
+  color: #0075f2;
+  margin: 0;
+}
+
+.intuit-left-side h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #0075f2;
+  margin-bottom: 15px;
+}
+
+.intuit-left-side h3 {
+  color: #0075f2;
+  padding-top: 2%;
+  margin-bottom: 1%;
+}
+
+.intuit-left-side p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.intuit-left-side li {
+  margin-bottom: 0.5rem;
+}
+
+.intuit-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid white;
+}

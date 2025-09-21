@@ -39,7 +39,7 @@ const App: React.FC = () => {
           className = "laptop-image"
           src = "/shift.png"
           style = {{
-            width: "90%",
+            width: "80%",
             padding: "5%"
             }}></img>
         </div>
@@ -80,6 +80,7 @@ const App: React.FC = () => {
             alt="AI Payment Solution"
             style = {{
               width: '70%',
+              marginTop: "-60px"
             }}
           />
           <div className="rbc-magnifier" style={magnifierStyle}>

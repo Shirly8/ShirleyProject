@@ -1,10 +1,11 @@
 .borealis-container {
   display: flex;
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
   gap: 2rem;
   color: white;
   background-image: url('../../HomeAssets/bg2.png');
+  margin-top: 75px;
 }
 
 .headingandlogo {

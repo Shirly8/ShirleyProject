@@ -3,7 +3,7 @@
 .rbc-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 95vh;
 }
 
 @media screen and (min-width: 750px) {
@@ -121,8 +121,7 @@
 
   .laptop-image{
     display: none !important;
-
-}
+  }
 
 
 }

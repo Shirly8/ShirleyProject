@@ -6,12 +6,13 @@ import RBC1 from "../pages/RBC1";
 import RBC2 from "../pages/RBC2";
 import KBH from "../pages/KBH";
 import BorealisAI from '../pages/Borealis';
+import Intuit from '../pages/Intuit';
 
 const TimelineSlider: React.FC = () => {
   
 
 
-  const components: JSX.Element[] = [<BorealisAI />,  <RBC1 />, <RBC2 />,<KBH />, ];
+  const components: JSX.Element[] = [<Intuit/>, <BorealisAI />,  <RBC1 />, <RBC2 />,<KBH />, ];
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [dragPosition, setDragPosition] = useState<number>(0);
