@@ -9,6 +9,7 @@ import send from '/HomeAssets/send.png';
 import headshot2 from '/HomeAssets/headshot2.png'
 import Timeline from '../components/TimelineSlider'
 import emailjs from '@emailjs/browser';
+import FunFacts from './FunFacts';
 
 function App() {
 
@@ -113,6 +114,9 @@ function App() {
       </div>
 
 
+    <div>
+      <FunFacts/>
+    </div>
 
 
     <div className = "container2">

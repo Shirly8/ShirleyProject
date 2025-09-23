@@ -16,21 +16,25 @@ const facts: Fact[] = [
   {
     id: 1,
     icon: <Music size={40} />,
-    text: "I create my own music, including songwriting, singing, and mixing/mastering, with over 100 songs produced.",
-    isLie: false,
+    text: "I really like to songwrite, singing, and produce my own music.",
+    isLie: true,
+    flipText: "I have my own studio and record my own music.",
+
   },
   {
     id: 2,
     icon: <Globe size={40} />,
-    text: "I've gone to Europe 2 times. First to Paris. Then to Spain and Italy",
-    isLie: true,
-    flipText: "I’ve never been to Europe but I’m planning to go on exchange at University of Lancaster in UK",
+    text: "I've been on exchange in UK (University of Lancaster) for 1 semester.",
+    isLie: false,
+    flipText: "I was supposed to go on exchange in UK but I accepted this internship instead.",
   },
   {
     id: 3,
     icon: <Heart size={40} />,
-    text: "I currently volunteer for 2 organizations, both in healthcare-related initiatives",
+    text: "I own a dog named Machiatto",
     isLie: false,
+    flipText: "I don't own a pet, but I used to raise a turtle named Turtle.",
+
   },
 ];
 
@@ -41,11 +45,13 @@ export default function TwoTruthsALie() {
   const handleSelect = (id: number, isLie: boolean) => {
     if (flipped[id]) return; // Prevent re-flipping
 
-    if (isLie) {
-      setFlipped((prev) => ({ ...prev, [id]: true }));
-    } else {
+    // All cards flip now
+    setFlipped((prev) => ({ ...prev, [id]: true }));
+    
+    // If it's not a lie, also add a shake effect before flipping
+    if (!isLie) {
       setShaking((prev) => ({ ...prev, [id]: true }));
-      setTimeout(() => setShaking((prev) => ({ ...prev, [id]: false })), 500);
+      setTimeout(() => setShaking((prev) => ({ ...prev, [id]: false })), 300);
     }
   };
 
