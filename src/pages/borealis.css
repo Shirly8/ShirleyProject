@@ -1,11 +1,12 @@
 .borealis-container {
   display: flex;
-  width: 100vw;
-  height: 95vh;
+  width: 100%;
+  height: 100%;
   gap: 2rem;
   color: white;
   background-image: url('../../HomeAssets/bg2.png');
-  margin-top: 75px;
+  margin-top: 0;
+  box-sizing: border-box;
 }
 
 .headingandlogo {
@@ -49,14 +50,11 @@
   flex: 0.55;
   justify-content: center;
   align-items: center;
-  align-items: center;
   padding: 2% 5%;
-  overflow-y: auto;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
-  justify-content: center;
-  align-items: center;
   display: flex;
-  margin-top: -200px;
+  margin-top: 0;
+  width: 80%;
 }
 
 .borealis-right h2{
@@ -65,42 +63,126 @@
   text-align: center;
 }
 
+/* Technologies box heading smaller */
+.impact .impact-header {
+  font-size: 18px;
+  background: rgba(0,0,0,0.2);
+
+}
+
+/* Technologies list smaller */
+.impact h3 {
+  font-size: 12px;
+}
+
 
 .impact{
   border: 1px solid white;
-  border-radius: 15%;
-  width: 100%;
-  margin-top: -75px;
+  border-radius: 10px;
+  margin-top: 0;
+  padding: 16px;
+  background: rgba(0,0,0,0.2);
+
+}
+
+/* Desktop-only enhanced styling for the Technologies card */
+@media (min-width: 751px) {
+  .impact {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: linear-gradient(135deg, rgba(27,59,255,0.12), rgba(255,255,255,0.04)), rgba(0,0,0,0.25);
+    box-shadow: 0 10px 24px rgba(27,59,255,0.18), 0 6px 12px rgba(0,0,0,0.25);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    width: 80%;
+  }
+
+  .impact:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 16px 40px rgba(27,59,255,0.28), 0 10px 20px rgba(0,0,0,0.30);
+    border-color: rgba(255,255,255,0.55);
+  }
+
+  .impact .impact-header {
+    letter-spacing: 0.5px;
+    background: linear-gradient(90deg, #ffffff, #a8b8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+  }
+
+  /* Turn technologies into pill chips on desktop */
+  .impact ul {
+    display: flex;
+    flex-direction: column; /* stack vertically on desktop */
+    gap: 10px;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 8px 0 0 0;
+    list-style: none;
+  }
+
+  .impact ul li {
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #e6eeff;
+    background: rgba(27,59,255,0.22);
+    border: 1px solid rgba(27,59,255,0.45);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 0 2px 8px rgba(27,59,255,0.20);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    width: 100%;
+    text-align: left;
+    width: 92%;
+  }
+
+  .impact ul li:hover {
+    transform: translateY(-2px);
+    background: rgba(27,59,255,0.30);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12), 0 6px 14px rgba(27,59,255,0.28);
+  }
 }
 
 .borealis-right h3{
-  font-size: 15px;
-  padding: 10px;
+  font-size: 14px;
+  padding: 8px 12px;
 }
 
 @media (max-width: 750px) {
   .borealis-container {
-    padding: 0% 15% 0% 13%;
+    margin-bottom: -50px; /* extend lower */
+    padding: 12px 5% 12px; /* add more bottom padding */
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 120vh;
+    height: 100%;
   }
 
-  .borealis-left h1 {
-    font-size: 40px;
-  }
+  .borealis-left h1 { font-size: 1.75rem; }
+  .borealis-left h2 { font-size: 0.95rem; }
+  .borealis-left h3 { font-size: 0.9rem; }
+  .borealis-left p  { font-size: 11px; }
 
   .borealis-right{
-    margin-top: -100px;
+    margin-top: 0;
+    overflow-y: auto; /* allow internal scroll within fixed slide height */
+    padding-bottom: 12px; /* avoid bottom clipping */
   }
+
+  /* Even smaller fonts in technologies box on mobile */
+  .impact .impact-header { font-size: 16px; }
+  .impact h3 { font-size: 11px; }
 
   .impact {
     border-radius: 15%;
     margin-top: 0px;
-    height: 60%;
-    width: 90vw;
+    height: auto;
+    width: 100%;
     border: 1px solid white;
   }
 

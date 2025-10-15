@@ -10,7 +10,7 @@
 .home-container {
   display: flex;
   width: 100vw;
-  color: white;
+  color: var(--color-text);
   padding: 0% 7%;
   box-sizing: border-box;
   height: 1000px;
@@ -22,7 +22,7 @@
   width: 100vw;
   margin-top: 100px;
   height: 100vh;
-  color: white;
+  color: var(--color-text);
   padding: 0% 7% 20% 7%;
   box-sizing: border-box;
   background-image: url('../../HomeAssets/bg.png');
@@ -53,7 +53,7 @@ h1 {
 }
 
 .highlight {
-  color: #ed9ab0;
+  color: var(--color-brand);
   display: block
 }
 
@@ -75,6 +75,11 @@ h3 {
   width: 40px;
   height: 40px;
   cursor: pointer;
+  transition: transform var(--duration-200) var(--easing-standard);
+}
+
+.icons img:hover {
+  transform: translateY(-2px) scale(1.04);
 }
 
 .right-side img {
@@ -83,9 +88,17 @@ h3 {
   padding: 10% 0px;
 }
 
+/* Ensure aurora media fits container */
+.aurora-media {
+  display: block;
+  width: 75%;
+  max-width: 100%;
+}
+
 .icons img {
   width: 60px; 
   height: 60px; 
+  will-change: transform;
 }
 
 
@@ -135,7 +148,7 @@ p {
 
 .boxheading{
   font-size: 15px;
-  color: #ed9ab0;
+  color: var(--color-brand);
   font-weight: bold;
   margin-bottom: -10px;
   margin-top: -6px;
@@ -152,7 +165,7 @@ p {
 
 .title-section h2 {
   font-size: 1.5rem;
-  color: #ed9ab0;
+  color: var(--color-brand);
   margin: 10px 0 20px;
 }
 
@@ -169,7 +182,7 @@ p {
   font-size: 10px;;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
-  background-color: #ed9ab0;
+  background-color: var(--color-brand);
   border-radius: 0px;
   width: 70%;
   color: black;
@@ -178,7 +191,7 @@ p {
 }
 
 .button-section button:hover {
-  background-color: #ed9ab0;
+  background-color: var(--color-brand);
 }
 
 .form-section {
@@ -212,17 +225,22 @@ p {
   margin-top: 10px;
 }
 
-.send-button {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 20px;
-  width: 20px;
+/* Override wide .button-section button styles for the form's send button */
+.form-section .send-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   color: white;
   cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--color-brand-weak);
 }
 
-.send-button:hover {
-  background-color: #ed9ab0;
+.form-section .send-button:hover {
+  background-color: var(--color-brand);
 }
 
 .footer-section {
@@ -242,7 +260,7 @@ p {
 .footer-section h4 {
   font-size: 1rem;
   text-align: left;
-  color: #ed9ab0;
+  color: var(--color-brand);
 
 }
 
@@ -256,13 +274,14 @@ p {
 
 .blank{
   position: absolute;
-  background-color: black;
+  background-color: var(--color-bg);
   margin-top: -15px;
   z-index: 1;
 }
 
 .container2{
-  background-color: #ed9ab0
+  background-color: var(--color-brand)
+  
 
 }
 
@@ -270,7 +289,8 @@ p {
   position: relative;
   width: 100%;          
   padding-top: 56.25%;   /* 16 : 9 aspect ratio; change if needed */
-  overflow: hidden;     
+  overflow: hidden;   
+  margin-top: 145px;  
 }
 
 .canva-embed {
@@ -283,6 +303,35 @@ p {
   transform:translate(-50%, -50%) scale(1);
 
   transform-origin: center;  
+}
+
+/* Desktop-only overlay that aligns with the laptop screen region in the Canva presentation */
+.laptop-overlay {
+  position: absolute;
+  top: 36%;
+  left: 34.7%;
+  width: 31%;
+  height: 36%;
+  border: 1px solid var(--color-brand-weak);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  pointer-events: auto;
+}
+
+.laptop-overlay .overlay-embed {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 250%;
+  height: 250%;
+  border: none;
+  transform: translate(-50%, -53%) scale(0.45);
+  transform-origin: center center;
+}
+
+@media (max-width: 768px) {
+  .laptop-overlay { display: none; }
 }
 
 /* Responsive Design */
@@ -339,6 +388,10 @@ p {
     align-items: center; 
     justify-content: center;
     text-align: center;
+  }
+
+  .aurora-media {
+    width: 90%;
   }
 
   h2 {

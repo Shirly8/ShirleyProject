@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import "./Timeline.css";
 
 // Import page components
@@ -79,6 +80,23 @@ const TimelineSlider: React.FC = () => {
     setCurrentIndex((prev) => Math.min(prev + 1, components.length - 1));
   };
 
+  // Keyboard support for the slider area
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      handlePrev();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      handleNext();
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      setCurrentIndex(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      setCurrentIndex(components.length - 1);
+    }
+  };
+
   return (
     <div className="timeline-container">
       <div
@@ -91,37 +109,49 @@ const TimelineSlider: React.FC = () => {
         onTouchStart={startDrag}
         onTouchMove={handleDrag}
         onTouchEnd={endDrag}
+        tabIndex={0}
+        role="slider"
+        aria-label="Career timeline"
+        aria-valuemin={0}
+        aria-valuemax={components.length - 1}
+        aria-valuenow={currentIndex}
+        aria-controls="timeline-slider-track"
+        onKeyDown={handleKeyDown}
       >
         <div className="timeline-header">
-          <button className="arrow-button" onClick={handlePrev}>&lt;</button>
-          <h2 className = "timelineheader" style={{ textAlign: "center", color: "#ed9ab0", userSelect: "none", margin: "0 10px" }}>
+          <button className="arrow-button" aria-label="Previous" onClick={handlePrev}>&lt;</button>
+          <h2 className = "timelineheader" style={{ textAlign: "center", color: "var(--color-brand)", userSelect: "none", margin: "0 10px" }}>
             My Professional Journey
           </h2>
-          <button className="arrow-button" onClick={handleNext}>&gt;</button>
+          <button className="arrow-button" aria-label="Next" onClick={handleNext}>&gt;</button>
         </div>
 
         <img
           src="/slider.svg"
           className="rocketship"
           ref={rocketshipRef}
+          alt="Timeline handle"
         />
       </div>
 
       {/* Sliding Content */}
       <div className="slider-content">
-        <div
+        <motion.div
+          id="timeline-slider-track"
           className="slider-track"
-          style={{
-            transform: `translateX(-${currentIndex * 100}vw)`,
-            transition: "transform 2.5s ease-out",
-          }}
+          animate={{ x: `-${currentIndex * 100}vw` }}
+          transition={{ duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}
         >
           {components.map((Component, index: number) => (
-            <div key={index} className="slider-item">
+            <div
+              key={index}
+              className={`slider-item ${index === currentIndex ? 'active' : ''}`}
+              aria-hidden={index !== currentIndex}
+            >
               {Component}
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -3,12 +3,18 @@
 .rbc-container {
   display: flex;
   flex-direction: column;
-  min-height: 95vh;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  background-color: #ffffff; /* ensure entire RBC slide is white on desktop */
 }
 
 @media screen and (min-width: 750px) {
   .rbc-container {
     flex-direction: row;
+    justify-content: center; /* center horizontally on desktop */
+    gap: 24px;
   }
 }
 
@@ -18,7 +24,7 @@
   background-color: #fff;
   padding: 2% 5%;
   overflow-y: auto;
-  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
 }
 
 .rbc-left-side h1 {
@@ -82,6 +88,7 @@
   justify-content: center;
   align-items: center;
   background-color: white;
+  max-width: 800px;
 }
 
 .rbc-right-side .rbc-image-container {
@@ -94,6 +101,16 @@
   transition: transform 0.3s ease-in-out;
 }
 
+/* Base laptop image size */
+.rbc-laptop-image {
+  width: 100%;
+  height: auto;
+}
+
+/* Magnifier inner image sizing */
+.rbc-laptop-abuse-image { transform: scale(0.9); }
+
+
 .rbc-right-side .rbc-image-container:hover img {
   transform: scale(1.1);
 }
@@ -103,23 +120,62 @@
 @media screen and (max-width: 750px) {
   .rbc-container {
     background-color: white;
-    padding-bottom: 50px;
-    
+    padding-bottom: 24px; /* reduce bottom padding to tighten gap */
+    align-items: stretch;
+    justify-content: stretch;
+    height: 100%; /* match timeline slide height */
   }
 
+  
+
   .rbc-left-side{
-    height: 100%;
+    height: 80%;
+    width: 100%;
+    padding: 16px;
+    margin-bottom: -10px;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: visible;
+    z-index: 1000;
   }
  
   .rbc-right-side {
-    margin-top: 20px;
+    margin-top: 0;
+    height: 28%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
 
-  .rbc-right-side .rbc-magnifier {
-    display: none !important;
+  .rbc-laptop-image {
+    width: 80%; /* smaller on mobile */
+    margin-top: -150px;
   }
 
-  .laptop-image{
+
+  .rbc-right-side {
+    margin-top: 0; /* remove negative offset */
+    position: relative;
+    z-index: 0; /* behind header/line which have higher z-index */
+  }
+
+
+
+  /* Smaller fonts on mobile */
+  .rbc-left-side h1 { font-size: 1.9rem; }
+  .rbc-left-side h2 { font-size: 0.9rem; }
+  .rbc-left-side h3 { font-size: 0.85rem; }
+  .rbc-left-side p  { font-size: 11px; }
+
+  .rbc-tech-box {
+    width: 90%;
+    justify-content: center;
+  }
+
+  /* Disable magnifier on mobile */
+  .rbc-magnifier{
     display: none !important;
   }
 

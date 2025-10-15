@@ -80,16 +80,18 @@ const App: React.FC = () => {
           <img
             src="/model.png"
             alt="AI Payment Solution"
+            className="rbc-laptop-image"
           />
           <div className="rbc-magnifier" style={magnifierStyle}>
             <img
               src="/model.png"
               alt="AI Payment Solution"
+              className="rbc-laptop-abuse-image"
               style={{
                 position: 'absolute',
                 left: `-${magnifierStyle.left}`,
                 top: `-${magnifierStyle.top}`,
-                transform: 'scale(2)',
+                // size controlled via CSS
               }}
             />
           </div>

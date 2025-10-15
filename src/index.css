@@ -11,6 +11,34 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Design tokens */
+  --color-bg: #000000;
+  --color-surface: #0f0f10;
+  --color-text: #e6e6e6;
+  --color-muted: #a6a6a6;
+  --color-brand: #ed9ab0;
+  --color-brand-weak: rgba(237, 154, 176, 0.25);
+
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 16px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  --shadow-1: 0 4px 12px rgba(237, 154, 176, 0.15);
+  --shadow-2: 0 10px 30px rgba(237, 154, 176, 0.25);
+
+  --easing-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-100: 120ms;
+  --duration-200: 240ms;
+  --duration-300: 360ms;
+  --duration-400: 500ms;
 }
 
 a {
@@ -28,6 +56,12 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+/* Unified focus ring */
+*:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
 }
 
 h1 {

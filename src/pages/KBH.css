@@ -7,7 +7,8 @@
   font-family: Arial, sans-serif;
   line-height: 1.5;
   width: 100%;
-  height: 90vh;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .kbh-right-side {
@@ -81,22 +82,40 @@
 @media (max-width: 768px) {
   .kbh-container {
     flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    padding: 18px 16px 8px; /* tighter top/bottom */
+    row-gap: 0; /* remove vertical gap between sections */
+    height: 100%; /* match timeline slide height */
+    
   }
 
   .kbh-left-side,
   .kbh-right-side {
-    flex: 1 1 100%;
+    width: 100%;
+    text-align: center;
   }
 
+  /* 70/30 vertical split */
+  .kbh-left-side {margin-top: -50px;height: 34%; overflow: visible; padding: 6px 6px 0; margin-bottom: 0; box-sizing: border-box; display: flex; justify-content: flex-start; align-items: center; }
+  .kbh-right-side {margin-top: -200px; }
 
-  .kbh-image2 {
-    display:none;
-  }
+  /* tighten paragraph spacing to avoid cutoff */
+  .kbh-paragraph { line-height: 1.3; }
 
-  
-  .magnified-image {
-    width: 50%;
-  }
-  
+  .kbh-image, .kbh-image2 { max-width: 70%; }
+
+  /* Make the secondary image smaller on mobile */
+  .kbh-image2 { max-width: 55%; }
+
+  /* .kbh-image2 { display:none; } */
+
+  .magnified-image { width: 5%; }
+
+  /* Smaller fonts on mobile */
+  .kbh-title { font-size: 1.75rem; }
+  .kbh-subtitle { font-size: 0.85rem; }
+  .kbh-heading { font-size: 0.95rem; }
+  .kbh-paragraph { font-size: 0.75rem; }
+  .kbh-title, .kbh-subtitle, .kbh-heading { margin: 0 0 6px; }
 }
-  

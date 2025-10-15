@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TopBar from './components/TopBar';
-import Home from './pages/Home';
-import TimelineSlider from './components/TimelineSlider';
-import CanvaProject from './pages/CanvaProject';
+// import ChatWidget from './components/ChatWidget';
+
+const Home = lazy(() => import('./pages/Home'));
+const TimelineSlider = lazy(() => import('./components/TimelineSlider'));
+const CanvaProject = lazy(() => import('./pages/CanvaProject'));
 
 
 const App: React.FC = () => {
@@ -11,11 +13,14 @@ const App: React.FC = () => {
     <Router>
       <TopBar />
       <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/work" element={<TimelineSlider />} />
-          <Route path="/project" element={<CanvaProject />} />
-        </Routes>
+        <Suspense fallback={<div style={{ padding: 24, color: 'var(--color-text)' }}>Loading…</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/work" element={<TimelineSlider />} />
+            <Route path="/project" element={<CanvaProject />} />
+          </Routes>
+        </Suspense>
+        {/* <ChatWidget /> */}
       </div>
     </Router>
   );
