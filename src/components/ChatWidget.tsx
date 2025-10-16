@@ -27,6 +27,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [showInfoTooltip, setShowInfoTooltip] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -172,7 +173,77 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
           }}
         >
           <div style={{ padding: '10px 12px', paddingRight: 40, borderBottom: '1px solid rgba(237,154,176,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', position: 'relative' }}>
-            <strong style={{ fontSize: 16 }}>{title}</strong>
+            <strong style={{ fontSize: 14 }}>{title}</strong>
+            <div 
+              style={{ 
+                position: 'relative', 
+                display: 'inline-flex', 
+                marginLeft: 6,
+                cursor: 'help'
+              }}
+              onMouseEnter={() => setShowInfoTooltip(true)}
+              onMouseLeave={() => setShowInfoTooltip(false)}
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgba(237,154,176,0.7)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ 
+                  transition: 'stroke 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.stroke = '#ed9ab0'}
+                onMouseLeave={(e) => e.currentTarget.style.stroke = 'rgba(237,154,176,0.7)'}
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
+              {showInfoTooltip && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: '-140px',
+                    marginTop: 8,
+                    width: 280,
+                    background: 'linear-gradient(135deg, rgba(0,0,0,0.95), rgba(237,154,176,0.15))',
+                    border: '1px solid rgba(237,154,176,0.4)',
+                    borderRadius: 8,
+                    padding: '12px',
+                    color: '#e6e6e6',
+                    fontSize: 11,
+                    lineHeight: '1.5',
+                    boxShadow: '0 8px 24px rgba(0,0,0,0.6), 0 0 0 1px rgba(237,154,176,0.2)',
+                    zIndex: 1001,
+                    backdropFilter: 'blur(12px)',
+                    pointerEvents: 'none'
+                  }}
+                >
+                  <div style={{ fontWeight: 600, color: '#ed9ab0', marginBottom: 6 }}>
+                    🤖 RAG-Powered Chat
+                  </div>
+                  <div style={{ fontSize: 10 }}>
+                    This chat uses <strong>Retrieval Augmented Generation</strong> to provide accurate answers about my experiences.
+                  </div>
+                  <div style={{ marginTop: 8, fontSize: 10, color: '#ccc' }}>
+                    <strong style={{ color: '#ed9ab0' }}>Tech Stack:</strong>
+                    <br />
+                    • <strong>Cohere</strong> embeddings for semantic search
+                    <br />
+                    • <strong>Supabase</strong> vector database for storage
+                    <br />
+                    • <strong>Groq AI</strong> for fast LLM inference
+                    <br />
+                    • Custom <strong>query</strong> backend
+                  </div>
+                </div>
+              )}
+            </div>
             <button
               aria-label="Close chat"
               onClick={() => setIsOpen(false)}
@@ -185,9 +256,6 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
             {/* Show suggestions if no messages yet */}
             {showSuggestions && messages.length === 0 && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <div style={{ color: '#e6e6e6', fontSize: 14, marginBottom: 8, textAlign: 'center' }}>
-                  👋 Hi! Ask me anything about Shirley
-                </div>
                 {SUGGESTIONS.map((suggestion, idx) => (
                   <button
                     key={idx}
@@ -199,7 +267,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
                       borderRadius: 10,
                       padding: '10px 12px',
                       cursor: 'pointer',
-                      fontSize: 13,
+                      fontSize: 12,
                       textAlign: 'left',
                       transition: 'all 0.2s ease',
                       boxShadow: '0 2px 8px rgba(237,154,176,0.15)',
@@ -234,6 +302,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
                     padding: '8px 10px',
                     borderRadius: 10,
                     maxWidth: '80%',
+                    fontSize: 13,
                     whiteSpace: 'pre-wrap',
                     border: m.role === 'assistant' ? '1px solid rgba(237,154,176,0.25)' : '1px solid rgba(0,0,0,0.15)',
                     boxShadow:
@@ -247,7 +316,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
               </div>
             ))}
             {isLoading && (
-              <div style={{ margin: '8px 0', color: '#aaa', fontSize: 12 }}>Thinking…</div>
+              <div style={{ margin: '8px 0', color: '#aaa', fontSize: 11 }}>Thinking…</div>
             )}
           </div>
           <div style={{ padding: 10, borderTop: '1px solid rgba(237,154,176,0.25)', display: 'flex', gap: 8 }}>
@@ -266,6 +335,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
                 borderRadius: 8,
                 padding: '10px 12px',
                 color: '#fff',
+                fontSize: 13,
                 outline: 'none',
                 boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.03)'
               }}
@@ -280,6 +350,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
                 border: '1px solid rgba(237,154,176,0.35)',
                 borderRadius: 8,
                 padding: '10px 12px',
+                fontSize: 13,
                 cursor: canSend ? 'pointer' : 'not-allowed',
                 boxShadow: canSend ? '0 6px 18px rgba(237,154,176,0.35)' : 'none',
               }}
