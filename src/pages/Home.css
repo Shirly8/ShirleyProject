@@ -355,14 +355,20 @@ p {
   }
 
   .iframe-wrapper {
-    height: 50vh;
+    height:40vh;
+    /* border: 2px solid red; */
   }
 
   .canva-embed{
-    transform:translate(-50%, -50%) scale(2.3);
     
 
   }
+  .container2{
+    margin-top: -300px;
+    margin-bottom: -100px;
+
+  }
+
 
   .home-container{
     display: flex;
@@ -435,7 +441,6 @@ p {
   .buttons{
     width: 90vw;
   }
-  
 
 
 }
