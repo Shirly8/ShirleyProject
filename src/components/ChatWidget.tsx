@@ -10,18 +10,23 @@ type ChatWidgetProps = {
   title?: string;
 };
 
+// Suggestion bubbles for initial prompts
+const SUGGESTIONS = [
+  "What's your tech stack and specialization?",
+  "Where are you right now?",
+  "What projects have you built?",
+  "What makes you unique as a developer?",
+];
+
+// Backend URL - update this with your Render URL
+const BACKEND_URL = import.meta.env.VITE_CHAT_API_URL || 'https://wisest.onrender.com';
+
 const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 'welcome',
-      role: 'assistant',
-      content:
-        "Hi! Ask me about my projects, experiences, impacts or just me in general'",
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(true);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -29,6 +34,13 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, isOpen]);
+
+  // Hide suggestions after first message
+  useEffect(() => {
+    if (messages.length > 0) {
+      setShowSuggestions(false);
+    }
+  }, [messages]);
 
   const canSend = useMemo(() => input.trim().length > 0 && !isLoading, [input, isLoading]);
 
@@ -40,7 +52,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
     setMessages((prev) => [...prev, userMsg]);
     setIsLoading(true);
     try {
-      const res = await fetch('/api/chat', {
+      const res = await fetch(`${BACKEND_URL}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text }),
@@ -63,6 +75,45 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
     }
   }
 
+  function handleSuggestionClick(suggestion: string) {
+    setInput(suggestion);
+    // Automatically send the message
+    setTimeout(() => {
+      const text = suggestion.trim();
+      if (!text) return;
+      setInput('');
+      const userMsg: Message = { id: crypto.randomUUID(), role: 'user', content: text };
+      setMessages((prev) => [...prev, userMsg]);
+      setIsLoading(true);
+      fetch(`${BACKEND_URL}/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text }),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error('Request failed');
+          return res.json();
+        })
+        .then((data) => {
+          const assistantMsg: Message = {
+            id: crypto.randomUUID(),
+            role: 'assistant',
+            content: data.answer ?? 'Sorry, I could not generate a response.',
+          };
+          setMessages((prev) => [...prev, assistantMsg]);
+        })
+        .catch(() => {
+          setMessages((prev) => [
+            ...prev,
+            { id: crypto.randomUUID(), role: 'assistant', content: 'Something went wrong. Please try again.' },
+          ]);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }, 0);
+  }
+
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
       e.preventDefault();
@@ -78,15 +129,29 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
           onClick={() => setIsOpen(true)}
           style={{
             borderRadius: 999,
-            padding: '12px 16px',
+            padding: '14px',
             background: 'linear-gradient(135deg, rgba(0,0,0,0.75), rgba(237,154,176,0.25))',
             color: '#fff',
             border: '1px solid rgba(237,154,176,0.35)',
             boxShadow: '0 8px 24px rgba(237,154,176,0.25), inset 0 0 0 1px rgba(255,255,255,0.05)',
             cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          Chat
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
         </button>
       )}
       {isOpen && (
@@ -117,6 +182,46 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
             </button>
           </div>
           <div ref={scrollRef} style={{ flex: 1, overflowY: 'auto', padding: 12 }} aria-live="polite" aria-atomic>
+            {/* Show suggestions if no messages yet */}
+            {showSuggestions && messages.length === 0 && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <div style={{ color: '#e6e6e6', fontSize: 14, marginBottom: 8, textAlign: 'center' }}>
+                  👋 Hi! Ask me anything about Shirley
+                </div>
+                {SUGGESTIONS.map((suggestion, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleSuggestionClick(suggestion)}
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(237,154,176,0.25), rgba(0,0,0,0.35))',
+                      color: '#e6e6e6',
+                      border: '1px solid rgba(237,154,176,0.35)',
+                      borderRadius: 10,
+                      padding: '10px 12px',
+                      cursor: 'pointer',
+                      fontSize: 13,
+                      textAlign: 'left',
+                      transition: 'all 0.2s ease',
+                      boxShadow: '0 2px 8px rgba(237,154,176,0.15)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(237,154,176,0.35), rgba(0,0,0,0.45))';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 4px 12px rgba(237,154,176,0.25)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(237,154,176,0.25), rgba(0,0,0,0.35))';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(237,154,176,0.15)';
+                    }}
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            )}
+            
+            {/* Show messages */}
             {messages.map((m) => (
               <div key={m.id} style={{ margin: '8px 0', display: 'flex' }}>
                 <div
