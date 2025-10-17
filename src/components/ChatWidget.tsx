@@ -13,9 +13,9 @@ type ChatWidgetProps = {
 // Suggestion bubbles for initial prompts
 const SUGGESTIONS = [
   "What's your tech stack and specialization?",
-  "Where are you right now?",
-  "What projects have you built?",
-  "What makes you unique as a developer?",
+  "What personal projects have you built?",
+  "What makes you unique?",
+  "When do you graduate?"
 ];
 
 // Backend URL - update this with your Render URL
@@ -28,6 +28,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
   const [isLoading, setIsLoading] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [showInfoTooltip, setShowInfoTooltip] = useState(false);
+  const [typingMessageId, setTypingMessageId] = useState<string | null>(null);
+  const [displayedContent, setDisplayedContent] = useState<{ [key: string]: string }>({});
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -36,11 +38,49 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
     }
   }, [messages, isOpen]);
 
-  // Hide suggestions after first message
+  // Show suggestions when no messages or after assistant responds (and typing is done)
   useEffect(() => {
-    if (messages.length > 0) {
-      setShowSuggestions(false);
+    if (messages.length === 0) {
+      setShowSuggestions(true);
+    } else {
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage.role === 'user') {
+        // Hide suggestions when user sends a message
+        setShowSuggestions(false);
+      }
+      // Suggestions will be shown when typing completes (handled in typing effect)
     }
+  }, [messages]);
+
+  // Typing animation effect for assistant messages
+  useEffect(() => {
+    const lastMessage = messages[messages.length - 1];
+    if (!lastMessage || lastMessage.role !== 'assistant') return;
+    
+    // Check if this message is already fully displayed
+    if (displayedContent[lastMessage.id] === lastMessage.content) return;
+    
+    // Start typing animation
+    setTypingMessageId(lastMessage.id);
+    setShowSuggestions(false); // Hide suggestions while typing
+    let currentIndex = 0;
+    const fullContent = lastMessage.content;
+    
+    const typingInterval = setInterval(() => {
+      currentIndex++;
+      setDisplayedContent(prev => ({
+        ...prev,
+        [lastMessage.id]: fullContent.slice(0, currentIndex)
+      }));
+      
+      if (currentIndex >= fullContent.length) {
+        clearInterval(typingInterval);
+        setTypingMessageId(null);
+        setShowSuggestions(true); // Show suggestions after typing completes
+      }
+    }, 20); // Adjust speed here (lower = faster)
+    
+    return () => clearInterval(typingInterval);
   }, [messages]);
 
   const canSend = useMemo(() => input.trim().length > 0 && !isLoading, [input, isLoading]);
@@ -116,15 +156,24 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+    if (e.key === 'Enter') {
       e.preventDefault();
       if (canSend) sendMessage();
     }
   }
 
   return (
-    <div style={{ position: 'fixed', right: 20, bottom: 20, zIndex: 1000 }}>
-      {!isOpen && (
+    <>
+      <style>
+        {`
+          @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+          }
+        `}
+      </style>
+      <div style={{ position: 'fixed', right: 20, bottom: 20, zIndex: 1000 }}>
+        {!isOpen && (
         <button
           aria-label="Open chat"
           onClick={() => setIsOpen(true)}
@@ -253,9 +302,50 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
             </button>
           </div>
           <div ref={scrollRef} style={{ flex: 1, overflowY: 'auto', padding: 12 }} aria-live="polite" aria-atomic>
-            {/* Show suggestions if no messages yet */}
-            {showSuggestions && messages.length === 0 && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {/* Show messages */}
+            {messages.map((m) => {
+              const contentToShow = m.role === 'assistant' && displayedContent[m.id] 
+                ? displayedContent[m.id] 
+                : m.content;
+              const isCurrentlyTyping = typingMessageId === m.id;
+              
+              return (
+                <div key={m.id} style={{ margin: '8px 0', display: 'flex' }}>
+                  <div
+                    style={{
+                      background:
+                        m.role === 'assistant'
+                          ? 'linear-gradient(135deg, rgba(0,0,0,0.35), rgba(237,154,176,0.15))'
+                          : '#ed9ab0',
+                      color: m.role === 'assistant' ? '#e6e6e6' : '#000',
+                      padding: '8px 10px',
+                      borderRadius: 10,
+                      maxWidth: '80%',
+                      fontSize: 13,
+                      whiteSpace: 'pre-wrap',
+                      border: m.role === 'assistant' ? '1px solid rgba(237,154,176,0.25)' : '1px solid rgba(0,0,0,0.15)',
+                      boxShadow:
+                        m.role === 'assistant'
+                          ? '0 4px 12px rgba(237,154,176,0.15)'
+                          : '0 4px 12px rgba(237,154,176,0.35)',
+                    }}
+                  >
+                    {contentToShow}
+                    {isCurrentlyTyping && (
+                      <span style={{ 
+                        opacity: 0.7, 
+                        animation: 'blink 1s infinite',
+                        marginLeft: 2
+                      }}>▋</span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+            
+            {/* Show suggestions after assistant response */}
+            {showSuggestions && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: messages.length > 0 ? 12 : 0 }}>
                 {SUGGESTIONS.map((suggestion, idx) => (
                   <button
                     key={idx}
@@ -289,32 +379,6 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
               </div>
             )}
             
-            {/* Show messages */}
-            {messages.map((m) => (
-              <div key={m.id} style={{ margin: '8px 0', display: 'flex' }}>
-                <div
-                  style={{
-                    background:
-                      m.role === 'assistant'
-                        ? 'linear-gradient(135deg, rgba(0,0,0,0.35), rgba(237,154,176,0.15))'
-                        : '#ed9ab0',
-                    color: m.role === 'assistant' ? '#e6e6e6' : '#000',
-                    padding: '8px 10px',
-                    borderRadius: 10,
-                    maxWidth: '80%',
-                    fontSize: 13,
-                    whiteSpace: 'pre-wrap',
-                    border: m.role === 'assistant' ? '1px solid rgba(237,154,176,0.25)' : '1px solid rgba(0,0,0,0.15)',
-                    boxShadow:
-                      m.role === 'assistant'
-                        ? '0 4px 12px rgba(237,154,176,0.15)'
-                        : '0 4px 12px rgba(237,154,176,0.35)',
-                  }}
-                >
-                  {m.content}
-                </div>
-              </div>
-            ))}
             {isLoading && (
               <div style={{ margin: '8px 0', color: '#aaa', fontSize: 11 }}>Thinking…</div>
             )}
@@ -360,7 +424,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 };
 
