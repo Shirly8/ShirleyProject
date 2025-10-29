@@ -30,7 +30,10 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
   const [showInfoTooltip, setShowInfoTooltip] = useState(false);
   const [typingMessageId, setTypingMessageId] = useState<string | null>(null);
   const [displayedContent, setDisplayedContent] = useState<{ [key: string]: string }>({});
+  const [showSlowMessage, setShowSlowMessage] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const slowMessageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isLoadingRef = useRef(false);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -51,6 +54,35 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
       // Suggestions will be shown when typing completes (handled in typing effect)
     }
   }, [messages]);
+
+  // Handle slow loading message (10 seconds timeout)
+  useEffect(() => {
+    isLoadingRef.current = isLoading;
+    
+    if (isLoading) {
+      setShowSlowMessage(false);
+      slowMessageTimeoutRef.current = setTimeout(() => {
+        // Check current loading state via ref to avoid stale closure
+        if (isLoadingRef.current) {
+          setShowSlowMessage(true);
+        }
+      }, 10000); // 10 seconds
+    } else {
+      // Clear timeout if loading completes before 10 seconds
+      if (slowMessageTimeoutRef.current) {
+        clearTimeout(slowMessageTimeoutRef.current);
+        slowMessageTimeoutRef.current = null;
+      }
+      setShowSlowMessage(false);
+    }
+    
+    return () => {
+      if (slowMessageTimeoutRef.current) {
+        clearTimeout(slowMessageTimeoutRef.current);
+        slowMessageTimeoutRef.current = null;
+      }
+    };
+  }, [isLoading]);
 
   // Typing animation effect for assistant messages
   useEffect(() => {
@@ -380,7 +412,9 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
             )}
             
             {isLoading && (
-              <div style={{ margin: '8px 0', color: '#aaa', fontSize: 11 }}>Thinking…</div>
+              <div style={{ margin: '8px 0', color: '#aaa', fontSize: 11 }}>
+                {showSlowMessage ? 'Sorry I take a while to start up' : 'Thinking…'}
+              </div>
             )}
           </div>
           <div style={{ padding: 10, borderTop: '1px solid rgba(237,154,176,0.25)', display: 'flex', gap: 8 }}>
