@@ -140,7 +140,7 @@ const TimelineSlider: React.FC = () => {
           id="timeline-slider-track"
           className="slider-track"
           animate={{ x: `-${currentIndex * 100}vw` }}
-          transition={{ duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}
+          transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
         >
           {components.map((Component, index: number) => (
             <div

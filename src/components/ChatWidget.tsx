@@ -31,8 +31,10 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
   const [typingMessageId, setTypingMessageId] = useState<string | null>(null);
   const [displayedContent, setDisplayedContent] = useState<{ [key: string]: string }>({});
   const [showSlowMessage, setShowSlowMessage] = useState(false);
+  const [showSecondMessage, setShowSecondMessage] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const slowMessageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const secondMessageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isLoadingRef = useRef(false);
 
   useEffect(() => {
@@ -55,31 +57,49 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
     }
   }, [messages]);
 
-  // Handle slow loading message (10 seconds timeout)
+  // Handle slow loading messages (5 seconds and 10 seconds timeout)
   useEffect(() => {
     isLoadingRef.current = isLoading;
     
     if (isLoading) {
       setShowSlowMessage(false);
+      setShowSecondMessage(false);
+      
+      // First message after 5 seconds
       slowMessageTimeoutRef.current = setTimeout(() => {
-        // Check current loading state via ref to avoid stale closure
         if (isLoadingRef.current) {
           setShowSlowMessage(true);
         }
-      }, 10000); // 10 seconds
+      }, 5000); // 5 seconds
+      
+      // Second message after 10 seconds (5 seconds after first)
+      secondMessageTimeoutRef.current = setTimeout(() => {
+        if (isLoadingRef.current) {
+          setShowSecondMessage(true);
+        }
+      }, 10000); // 10 seconds total
     } else {
-      // Clear timeout if loading completes before 10 seconds
+      // Clear timeouts if loading completes
       if (slowMessageTimeoutRef.current) {
         clearTimeout(slowMessageTimeoutRef.current);
         slowMessageTimeoutRef.current = null;
       }
+      if (secondMessageTimeoutRef.current) {
+        clearTimeout(secondMessageTimeoutRef.current);
+        secondMessageTimeoutRef.current = null;
+      }
       setShowSlowMessage(false);
+      setShowSecondMessage(false);
     }
     
     return () => {
       if (slowMessageTimeoutRef.current) {
         clearTimeout(slowMessageTimeoutRef.current);
         slowMessageTimeoutRef.current = null;
+      }
+      if (secondMessageTimeoutRef.current) {
+        clearTimeout(secondMessageTimeoutRef.current);
+        secondMessageTimeoutRef.current = null;
       }
     };
   }, [isLoading]);
@@ -413,7 +433,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
             
             {isLoading && (
               <div style={{ margin: '8px 0', color: '#aaa', fontSize: 11 }}>
-                {showSlowMessage ? 'Sorry I take a while to start up' : 'Thinking…'}
+                {showSecondMessage ? 'In the meantime check out my site' : showSlowMessage ? 'Sorry I take a while to start up' : 'Thinking…'}
               </div>
             )}
           </div>
