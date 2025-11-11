@@ -222,6 +222,53 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
             0%, 50% { opacity: 1; }
             51%, 100% { opacity: 0; }
           }
+          @keyframes glow {
+            0% {
+              box-shadow: 0 8px 24px rgba(255,105,180,0.6), 
+                          0 0 15px rgba(255,130,200,0.8),
+                          0 0 25px rgba(255,105,180,0.7),
+                          0 0 35px rgba(255,140,210,0.5),
+                          -2px -2px 10px rgba(255,255,255,0.4),
+                          2px 2px 10px rgba(255,130,200,0.6),
+                          inset 0 0 0 1px rgba(255,255,255,0.2);
+            }
+            25% {
+              box-shadow: 0 8px 24px rgba(255,105,180,0.8), 
+                          0 0 20px rgba(255,130,200,1),
+                          0 0 30px rgba(255,105,180,0.9),
+                          0 0 40px rgba(255,140,210,0.7),
+                          2px -2px 12px rgba(255,255,255,0.5),
+                          -2px 2px 12px rgba(255,130,200,0.7),
+                          inset 0 0 0 1px rgba(255,255,255,0.3);
+            }
+            50% {
+              box-shadow: 0 8px 24px rgba(255,105,180,0.7), 
+                          0 0 18px rgba(255,130,200,0.9),
+                          0 0 28px rgba(255,105,180,0.8),
+                          0 0 38px rgba(255,140,210,0.6),
+                          -2px 2px 11px rgba(255,255,255,0.4),
+                          2px -2px 11px rgba(255,130,200,0.6),
+                          inset 0 0 0 1px rgba(255,255,255,0.25);
+            }
+            75% {
+              box-shadow: 0 8px 24px rgba(255,105,180,0.85), 
+                          0 0 22px rgba(255,130,200,1),
+                          0 0 32px rgba(255,105,180,0.95),
+                          0 0 42px rgba(255,140,210,0.75),
+                          2px 2px 13px rgba(255,255,255,0.6),
+                          -2px -2px 13px rgba(255,130,200,0.8),
+                          inset 0 0 0 1px rgba(255,255,255,0.35);
+            }
+            100% {
+              box-shadow: 0 8px 24px rgba(255,105,180,0.6), 
+                          0 0 15px rgba(255,130,200,0.8),
+                          0 0 25px rgba(255,105,180,0.7),
+                          0 0 35px rgba(255,140,210,0.5),
+                          -2px -2px 10px rgba(255,255,255,0.4),
+                          2px 2px 10px rgba(255,130,200,0.6),
+                          inset 0 0 0 1px rgba(255,255,255,0.2);
+            }
+          }
         `}
       </style>
       <div style={{ position: 'fixed', right: 20, bottom: 20, zIndex: 1000 }}>
@@ -235,11 +282,11 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
             background: 'linear-gradient(135deg, rgba(0,0,0,0.75), rgba(237,154,176,0.25))',
             color: '#fff',
             border: '1px solid rgba(237,154,176,0.35)',
-            boxShadow: '0 8px 24px rgba(237,154,176,0.25), inset 0 0 0 1px rgba(255,255,255,0.05)',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            animation: 'glow 0.8s ease-in-out infinite',
           }}
         >
           <svg
