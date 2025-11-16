@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TopBar from './components/TopBar';
 import ChatWidget from './components/ChatWidget';
 
+const Analytics = () => null;
+
 const Home = lazy(() => import('./pages/Home'));
 const TimelineSlider = lazy(() => import('./components/TimelineSlider'));
 const CanvaProject = lazy(() => import('./pages/CanvaProject'));
-
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           </Routes>
         </Suspense>
         <ChatWidget />
+        <Analytics />
       </div>
     </Router>
   );

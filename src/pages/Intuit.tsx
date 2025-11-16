@@ -1,7 +1,5 @@
 import React from 'react';
 import './Intuit.css';
-import intuitDemo from '/demo.png';
-import intuit from '/intuit.png'
 
 const IntuitPage: React.FC = () => {
   return (
@@ -9,7 +7,7 @@ const IntuitPage: React.FC = () => {
       {/* Left Side */}
       <div className="intuit-left-side">
         <div className="intuit-heading">
-            <img src={intuit} alt="Intuit Logo" className="intuit-logo" />
+            <img src="/intuit.png" alt="Intuit Logo" className="intuit-logo" />
             <h1>Intuit</h1>
         </div>
 
@@ -31,7 +29,7 @@ const IntuitPage: React.FC = () => {
 
       {/* Right Side */}
       <div className="intuit-right-side">
-        <img src={intuitDemo} alt="ArgoCD GitOps Promoter Demo" className="intuit-image" />
+        <img src="/demo.png" alt="ArgoCD GitOps Promoter Demo" className="intuit-image" />
       </div>
     </div>
   );
