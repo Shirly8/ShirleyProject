@@ -1,9 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import TopBar from './components/TopBar';
 import ChatWidget from './components/ChatWidget';
-
-const Analytics = () => null;
 
 const Home = lazy(() => import('./pages/Home'));
 const TimelineSlider = lazy(() => import('./components/TimelineSlider'));
