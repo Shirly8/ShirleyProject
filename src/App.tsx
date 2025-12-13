@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import TopBar from './components/TopBar';
 import ChatWidget from './components/ChatWidget';
 
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         </Suspense>
         <ChatWidget />
         <Analytics />
+        <SpeedInsights />
       </div>
     </Router>
   );
