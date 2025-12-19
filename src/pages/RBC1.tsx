@@ -33,21 +33,21 @@ const App: React.FC = () => {
         <h1>RBC</h1>
         <h2>2024 - Core and Real-Time Payment AI Solution</h2>
         <p>
-          Built an abuse detection system for e-Transfer transactions. The problem: payment memos had become a vector for harassment. Banks needed automated detection without manual moderation at scale. Runs inline with RBC's payment flow—the challenge was catching abuse fast enough without slowing down legitimate transactions.
+          Built abuse detection for e-Transfer transactions. Payment memos were being used for harassment. Needed to catch abuse in real time without slowing down legitimate payments.
         </p>
 
         <h3>RoBERTa Model + LLM Validation</h3>
         <p>
-        Trained and compared three transformer models (<strong>RoBERTa, BERT, XLNet</strong>) on e-Transfer memos. RoBERTa performed best—better at understanding short, informal payment messages. Added <strong>Meta Llama 3.1</strong> as a validation layer for uncertain classifications. Two-stage approach: fast classification for obvious cases, then deep review for ambiguous ones. The LLM catches patterns the classifier misses by reasoning about context and intent.
+        Compared three transformer models on e-Transfer memos. <strong>RoBERTa</strong> worked best for short, informal messages. Added <strong>Meta Llama 3.1</strong> to review uncertain cases. Fast classification first, then deep review for ambiguous ones. The LLM catches what the classifier misses by understanding context.
         </p>
 
         <h3>Model Tuning</h3>
         <p>
-          Initial training hit accuracy issues—class imbalance, loss function mismatch, hyperparameter misalignment. Fixed by implementing class weighting, switching to binary cross-entropy for multi-label classification, and using <strong>Optuna</strong> to find optimal batch size and learning rate. Implemented <strong>Elastic Weight Consolidation</strong> to prevent catastrophic forgetting when updating with new fraud patterns.
+          Initial training had accuracy issues. Class imbalance, wrong loss function, bad hyperparameters. Fixed with class weighting, binary cross-entropy for multi-label, and <strong>Optuna</strong> for hyperparameter search. Used <strong>Elastic Weight Consolidation</strong> so the model learns new patterns without forgetting old ones.
         </p>
 
-        <h3>Production Deployment & Demo</h3>
-        <p>Built REST API with <strong>FastAPI</strong> and deployed to Kubernetes (OpenShift). Built a React demo with WebSocket connections for RBC's internal tech expo—processed 700+ live interactions showing real-time abuse detection.</p>
+        <h3>Production Deployment</h3>
+        <p>Built REST API with <strong>FastAPI</strong>, deployed to Kubernetes. Built React demo with WebSockets for RBC's tech expo.</p>
 
         {/* Technologies Box */}
         <div className="rbc-tech-box">

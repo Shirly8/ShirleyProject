@@ -31,7 +31,7 @@ const App: React.FC = () => {
         <h1>RBC</h1>
         <h2>2023 - Workforce Management SharePoint</h2>
         <p>
-        Call center managers were spending 2-3 days per cycle on manual scheduling coordination—juggling static Excel trackers and disconnected SharePoint forms. Built a SharePoint site that automates the workflow and connects to Microsoft apps via Graph API. The key was understanding their actual process, not just the documentation.
+        Call center managers spent 2-3 days per cycle on manual scheduling. Juggling Excel trackers and disconnected SharePoint forms. Built a SharePoint site that automates the workflow and connects to Microsoft apps via Graph API. Had to understand how they actually worked, not what the docs said.
         </p>
 
         <div className = "image">
@@ -48,9 +48,9 @@ const App: React.FC = () => {
         <p>
         Used <strong>SPFx, ASP.NET, and Node.js</strong> to build:
 
-          <li>Workforce Management Hub with 12 interactive resource pages using SPFx Web Parts. Auto-scheduling logic pulls real-time availability from Outlook calendars via Microsoft Graph, applies constraint logic, and generates a Flex Rotational Calendar.</li>
-          <li>Shift scheduler with adherence monitoring—tracks attendance and flags discrepancies. Integrates with Verint—reverse engineered their undocumented API by watching network requests.</li>
-          <li>ETL pipeline that migrates data from Tableau to Verint. Built transformation logic using SQL window functions to aggregate metrics like handle time and sentiment trends.</li>
+          <li>Workforce Management Hub with 12 interactive pages. Auto-scheduling pulls availability from Outlook calendars via Microsoft Graph and generates schedules.</li>
+          <li>Shift scheduler tracks attendance and flags discrepancies. Integrates with Verint. Reverse engineered their undocumented API by watching network requests.</li>
+          <li>ETL pipeline migrates data from Tableau to Verint. Used SQL window functions to aggregate handle time and sentiment metrics.</li>
         </p>
 
         <div className="rbc-tech-box">

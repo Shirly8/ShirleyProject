@@ -76,6 +76,56 @@ function App() {
     return () => io.disconnect();
   }, []);
 
+  // Typing animation state
+  const [typingText, setTypingText] = useState('Hi! I\'m ');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showCursor, setShowCursor] = useState(true);
+
+  const texts = ["Hi! I'm Shirley Huang", "Hi! I'm Bi Yi Huang"];
+  const baseText = "Hi! I'm ";
+
+  useEffect(() => {
+    const currentFullText = texts[currentIndex];
+    const targetText = isDeleting ? baseText : currentFullText;
+    const currentLength = typingText.length;
+
+    if (!isDeleting && currentLength < targetText.length) {
+      // Typing forward
+      const timeout = setTimeout(() => {
+        setTypingText(targetText.slice(0, currentLength + 1));
+      }, 100);
+      return () => clearTimeout(timeout);
+    } else if (isDeleting && currentLength > baseText.length) {
+      // Deleting backward
+      const timeout = setTimeout(() => {
+        setTypingText(targetText.slice(0, currentLength - 1));
+      }, 50);
+      return () => clearTimeout(timeout);
+    } else if (!isDeleting && currentLength === targetText.length) {
+      // Finished typing, wait then start deleting
+      const timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, 2000);
+      return () => clearTimeout(timeout);
+    } else if (isDeleting && currentLength === baseText.length) {
+      // Finished deleting, move to next text
+      const timeout = setTimeout(() => {
+        setIsDeleting(false);
+        setCurrentIndex((prev) => (prev + 1) % texts.length);
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [typingText, isDeleting, currentIndex, texts, baseText]);
+
+  // Cursor blink animation
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 530);
+    return () => clearInterval(cursorInterval);
+  }, []);
+
   const boxContainer = {
     hidden: {},
     visible: {
@@ -95,9 +145,17 @@ function App() {
   <div className="home-container">
   <div className="left-side">
     <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}>
-      Shirley <span className="highlight">Huang</span>
+      The Shirley <span className="highlight">Project</span>
     </motion.h1>
-    <motion.h3 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}>Shirley Huang</motion.h3>
+    <motion.h3 
+      initial={{ opacity: 0, y: 24 }} 
+      animate={{ opacity: 1, y: 0 }} 
+      transition={{ delay: 0.2, duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}
+      style={{ minHeight: '1.5em' }}
+    >
+      {typingText}
+      <span style={{ opacity: showCursor ? 1 : 0, marginLeft: '2px' }}>|</span>
+    </motion.h3>
     <motion.div className="icons" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}>
       <a aria-label="Email Shirley" href = "mailto:ShirleyHuang7@hotmail.com"><img loading="lazy" decoding="async" src={mail} alt="Mail"/> </a> 
       <a aria-label="Shirley's LinkedIn" rel="noopener noreferrer" target="_blank" href = "https://www.linkedin.com/in/shirleyh11/"><img loading="lazy" decoding="async" src={linkedin} alt="LinkedIn" /> </a>
@@ -128,7 +186,7 @@ function App() {
           <strong>📍 Toronto, Ontario </strong> <br></br>
           <strong>💻 Computer Science + Business Minor</strong>
           <br />
-        <div style = {{marginTop: "15px"}}> I build systems that solve problems engineers actually face. I take things apart to see how they really work, then rebuild them better. Currently at Intuit building GitOps tooling, previously worked on fraud detection at RBC and responsible AI at Borealis. </div>
+        <div style = {{marginTop: "15px"}}> I build things that work. Currently at Intuit building GitOps tooling. Previously worked on fraud detection at RBC and responsible AI at Borealis. </div>
         </h3>
   
 
