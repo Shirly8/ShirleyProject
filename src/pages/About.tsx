@@ -25,21 +25,19 @@ const About: React.FC = () => {
         ref={rightSideRef}
         className={`right-side ${rightSideInView ? "animate" : ""}`}
       >
-        <h2>Product-Oriented Developer By Heart</h2>
+        <h2>Developer</h2>
         <p>
-          <strong>Driven to Build, Optimize, and Lead Innovative Solutions</strong>
-          <br />
-          Endorsed by my past employer as a highly creative individual who would go beyond the capabilities of what was offered, I am incredibly passionate about building something from the ground up or identifying opportunities for improvement and fulfilling them.
+          I build systems that solve problems engineers actually face. I take things apart to see how they really work, then rebuild them better. Currently at Intuit building GitOps tooling, previously worked on fraud detection at RBC and responsible AI at Borealis.
         </p>
         <p>
-          I aim to explore beyond my capabilities and challenge myself in technical areas and UI design. My ultimate career aspiration is to take on leadership and management roles.
+          Years of presenting ideas and structuring arguments taught me to think about how people actually use what I build. That shows up in how I code, how I design, and how I work with teams. I care about the details that make systems fast, reliable, and actually useful—not just functional. I dig into why something is slow, not just that it's slow.
         </p>
 
         <div className="boxes">
           <div className="box">
             <h3>Programming</h3>
             <p>
-              JavaScript, TypeScript, Python, SQL, MongoDB, C, C++, Java, Node.js,
+              JavaScript, TypeScript, Python, Go, SQL, MongoDB, C, C++, Java, Node.js,
               Express.js, Angular, React, HTML, CSS, SPFx, ASP.NET
             </p>
           </div>

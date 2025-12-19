@@ -95,9 +95,9 @@ function App() {
   <div className="home-container">
   <div className="left-side">
     <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}>
-      The Shirley <span className="highlight">Project</span>
+      Shirley <span className="highlight">Huang</span>
     </motion.h1>
-    <motion.h3 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}>Hello! I am Shirley Huang!</motion.h3>
+    <motion.h3 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}>Shirley Huang</motion.h3>
     <motion.div className="icons" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}>
       <a aria-label="Email Shirley" href = "mailto:ShirleyHuang7@hotmail.com"><img loading="lazy" decoding="async" src={mail} alt="Mail"/> </a> 
       <a aria-label="Shirley's LinkedIn" rel="noopener noreferrer" target="_blank" href = "https://www.linkedin.com/in/shirleyh11/"><img loading="lazy" decoding="async" src={linkedin} alt="LinkedIn" /> </a>
@@ -123,13 +123,12 @@ function App() {
     <div
         className="right-side">
 
-      <h2>Customer-Oriented Developer <span className="highlight">By Heart</span></h2>
+      <h2>Developer <span className="highlight">in Toronto</span></h2>
         <h3 style = {{fontSize: "15px"}}>
           <strong>📍 Toronto, Ontario </strong> <br></br>
-          <strong>💻 Computer Science + Business Minor</strong>  <br></br>
-          <strong>✏️ 3C's - Creative/Committed/Curious</strong>
+          <strong>💻 Computer Science + Business Minor</strong>
           <br />
-        <div style = {{marginTop: "15px"}}> Software Developer passionate about building user-centric solutions that merges innovative technology with exceptional experience. </div>
+        <div style = {{marginTop: "15px"}}> I build systems that solve problems engineers actually face. I take things apart to see how they really work, then rebuild them better. Currently at Intuit building GitOps tooling, previously worked on fraud detection at RBC and responsible AI at Borealis. </div>
         </h3>
   
 
@@ -143,7 +142,7 @@ function App() {
           <motion.div className="box" variants={boxItem}>
             <h3 className = "boxheading">Programming</h3>
             <p className = "boxtext">
-              JavaScript, TypeScript, Python, SQL, MongoDB, C, C++, Java, Node.js,
+              JavaScript, TypeScript, Python, Go, SQL, MongoDB, C, C++, Java, Node.js,
               Express.js, Angular, React, HTML, CSS, SPFx, ASP.NET
             </p>
           </motion.div>
@@ -207,11 +206,10 @@ function App() {
       
     <div className="left-side">
         <div className="title-section">
-          <h1>Thank you!</h1>
-          <h2>Just glad you're here:</h2>
+          <h1>Get in touch</h1>
         </div>
         <div className="button-section">
-          <button onClick={handleTalkClick} aria-expanded={showForm} aria-controls="contact-form">Let's Talk</button>
+          <button onClick={handleTalkClick} aria-expanded={showForm} aria-controls="contact-form">Send a message</button>
           {showForm && (
           <form id="contact-form" className="form-section" onSubmit={handleSendClick} noValidate>
             <label>
@@ -237,13 +235,13 @@ function App() {
           </div>
         )}
 
-         <a className = "buttons" href = "https://www.linkedin.com/in/shirleyh11/edit/forms/next-action/after-connect-update-profile/"> <button className = "buttons">Let's Connect</button> </a>
+         <a className = "buttons" href = "https://www.linkedin.com/in/shirleyh11/edit/forms/next-action/after-connect-update-profile/"> <button className = "buttons">LinkedIn</button> </a>
           <a  className = "buttons"  href = "https://github.com/Shirly8"> <button>GitHub</button> </a>
           </div>
         
         <div className="footer-section">
           <h3>Shirley Huang</h3>
-          <h4>Developer</h4>
+          <h4>Software Engineer</h4>
         </div>
       </div>
 

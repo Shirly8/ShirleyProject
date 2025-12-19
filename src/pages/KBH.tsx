@@ -21,21 +21,18 @@ const Home: React.FC = () => {
           <img src="/kbh.png" className="kbh-image2" />
         </div>
         <div className="kbh-middle">
-          <h3 className="kbh-heading">Built for SEO optimization</h3>
+          <h3 className="kbh-heading">Website</h3>
           <p className="kbh-paragraph">
-           <li> Implementing user-friendly design, with a strong emphasis on branding and
-            accessibility of information.  </li> <br></br>
-            <li>Focused heavily on SEO optimization, resulting
-            in site placed high in keyword searches and an increase in site traffic,
-            generating over <strong>10,000+ </strong> visitors in 2023. </li>
+           <li>Built a clean, accessible site that clearly explains hospice services and makes it easy for families to find information. The challenge was making complex medical information understandable for people who are already stressed.</li> <br></br>
+            <li>Optimized for SEO. Researched what families actually search for when looking for hospice care, then structured the content and metadata around those queries. The site ranks high for key hospice-related searches in the GTA. Over <strong>10,000</strong> visitors in 2023, with <strong>40% increase</strong> in contact form submissions.</li>
           </p>
         </div>
         <div className="kbh-bottom">
-          <h3 className="kbh-heading">MORE THAN JUST DESIGNING WEBSITE...</h3>
+          <h3 className="kbh-heading">Beyond the Website</h3>
           <p className="kbh-paragraph">
-            <li>Led sponsorships & partnerships, collaborating with The City of Brampton, Tim Hortons Smile Cookie Campaign, and Trillium Ontario to secure funding. </li> <br></br>
+            <li>Led sponsorships and partnerships with City of Brampton, Tim Hortons Smile Cookie Campaign, and Trillium Ontario</li> <br></br>
 
-            <li>Major Contribution – Secured support from Yew-Thong (Head of Architectural TMU), achieving an estimated $60,000 cost savings for the hospice project.</li>
+            <li>Connected with Yew-Thong (Head of Architectural TMU) to get architectural support, saving an estimated $60,000 on the hospice project</li>
           </p>
         </div>
       </div>

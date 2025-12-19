@@ -121,7 +121,7 @@ const TimelineSlider: React.FC = () => {
         <div className="timeline-header">
           <button className="arrow-button" aria-label="Previous" onClick={handlePrev}>&lt;</button>
           <h2 className = "timelineheader" style={{ textAlign: "center", color: "var(--color-brand)", userSelect: "none", margin: "0 10px" }}>
-            My Professional Journey
+            Work
           </h2>
           <button className="arrow-button" aria-label="Next" onClick={handleNext}>&gt;</button>
         </div>

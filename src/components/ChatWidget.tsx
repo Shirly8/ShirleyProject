@@ -12,10 +12,10 @@ type ChatWidgetProps = {
 
 // Suggestion bubbles for initial prompts
 const SUGGESTIONS = [
-  "What's your tech stack and specialization?",
-  "What personal projects have you built?",
-  "What makes you unique?",
-  "When do you graduate?"
+  "What technologies do you use?",
+  "Tell me about your work",
+  "What's your background?",
+  "What are you working on now?"
 ];
 
 // Backend URL - update this with your Render URL

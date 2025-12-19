@@ -33,38 +33,33 @@ const App: React.FC = () => {
         <h1>RBC</h1>
         <h2>2024 - Core and Real-Time Payment AI Solution</h2>
         <p>
-          Optimized a high-performance <strong>Natural Language
-          Processing (NLP) </strong>to analyze e-Transfer transactions messages in RBC's payment system.
+          Built an abuse detection system for e-Transfer transactions. The problem: payment memos had become a vector for harassment. Banks needed automated detection without manual moderation at scale. Runs inline with RBC's payment flow—the challenge was catching abuse fast enough without slowing down legitimate transactions.
         </p>
 
-        <h3>Integrated LLM validation on 1M+ e-transfer transaction</h3>
+        <h3>RoBERTa Model + LLM Validation</h3>
         <p>
-
-        Fine-tuned a binary multi-class <strong>BERT model </strong> to classify messages across six distinct
-        categories of abuse + <strong>LLM validation (Meta Llama 3.1)</strong> for contextual refinement in the pipeline.
+        Trained and compared three transformer models (<strong>RoBERTa, BERT, XLNet</strong>) on e-Transfer memos. RoBERTa performed best—better at understanding short, informal payment messages. Added <strong>Meta Llama 3.1</strong> as a validation layer for uncertain classifications. Two-stage approach: fast classification for obvious cases, then deep review for ambiguous ones. The LLM catches patterns the classifier misses by reasoning about context and intent.
         </p>
 
-        <h3>Model Optimization</h3>
+        <h3>Model Tuning</h3>
         <p>
-          Utilized model optimization, such as <strong>Optuna for Hyperparameter
-          tuning </strong> and <strong>Elastic Weight Consolidation (EWC) </strong> to enhance stability. These efforts resulted
-          in an impressive F1 score of 0.98 and an AUC of 0.95.
+          Initial training hit accuracy issues—class imbalance, loss function mismatch, hyperparameter misalignment. Fixed by implementing class weighting, switching to binary cross-entropy for multi-label classification, and using <strong>Optuna</strong> to find optimal batch size and learning rate. Implemented <strong>Elastic Weight Consolidation</strong> to prevent catastrophic forgetting when updating with new fraud patterns.
         </p>
 
-        <h3>Catalyst Tech Expo Deployment</h3>
-        <p>Showcased the solution’s impact on real-time fraud detection, attracting 700+ interactions and boosting customer engagement by 75%.</p>
+        <h3>Production Deployment & Demo</h3>
+        <p>Built REST API with <strong>FastAPI</strong> and deployed to Kubernetes (OpenShift). Built a React demo with WebSocket connections for RBC's internal tech expo—processed 700+ live interactions showing real-time abuse detection.</p>
 
         {/* Technologies Box */}
         <div className="rbc-tech-box">
           <div className="rbc-text">
             <h3>Technologies</h3>
             <p style = {{fontWeight: "bolder"}}>
-              <li>PyTorch</li> 
-              <li>SciKit-Learn</li> 
-              <li>Transformers</li>
-              <li>Numpy</li>
-              <li>Matplotlib</li>
-              <li>spaCy</li></p>
+              <li>PyTorch Lightning</li> 
+              <li>HuggingFace Transformers</li>
+              <li>FastAPI</li>
+              <li>Docker</li>
+              <li>Kubernetes</li>
+              <li>React</li></p>
           </div>
           <img src="/ai.png" alt="Technology illustration" />
         </div>

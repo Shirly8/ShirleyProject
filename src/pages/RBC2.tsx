@@ -29,9 +29,9 @@ const App: React.FC = () => {
         {/* Left Side */}
       <div className="rbc-left-side">
         <h1>RBC</h1>
-        <h2>2023 - Workforce Management (WFM) SharePoint</h2>
+        <h2>2023 - Workforce Management SharePoint</h2>
         <p>
-        A centralized solution for optimizing call center operations and integrating seamlessly with Microsoft Applications via Graph API.
+        Call center managers were spending 2-3 days per cycle on manual scheduling coordination—juggling static Excel trackers and disconnected SharePoint forms. Built a SharePoint site that automates the workflow and connects to Microsoft apps via Graph API. The key was understanding their actual process, not just the documentation.
         </p>
 
         <div className = "image">
@@ -44,19 +44,18 @@ const App: React.FC = () => {
             }}></img>
         </div>
 
-        <h3>Solution for Call Centres</h3>
+        <h3>What I Built</h3>
         <p>
-        Leveraging <strong>SPFx, ASP.NET, and Node.js (JavaScript)</strong>, I built key tools, including:
+        Used <strong>SPFx, ASP.NET, and Node.js</strong> to build:
 
-          <li>Automated Flex Rotational Calendar </li>
-          <li>Shift Scheduler & Adherence Monitor</li>
-          <li>ETL System Migration (Tableau to Verint)</li>
+          <li>Workforce Management Hub with 12 interactive resource pages using SPFx Web Parts. Auto-scheduling logic pulls real-time availability from Outlook calendars via Microsoft Graph, applies constraint logic, and generates a Flex Rotational Calendar.</li>
+          <li>Shift scheduler with adherence monitoring—tracks attendance and flags discrepancies. Integrates with Verint—reverse engineered their undocumented API by watching network requests.</li>
+          <li>ETL pipeline that migrates data from Tableau to Verint. Built transformation logic using SQL window functions to aggregate metrics like handle time and sentiment trends.</li>
         </p>
 
         <div className="rbc-tech-box">
           <div className="rbc-text">
-          <p style = {{fontWeight: "bolder"}}> 🚀 Reduced workforce task completion time from 3 days to 2 hours. <br></br>
-            🚀 SharePoint site increased usage 3x, serving 1,000+ call advisors!
+          <p style = {{fontWeight: "bolder"}}> Managers went from spending days on planning to hours. SharePoint usage tripled because people actually found it useful. Now serves call advisors across multiple teams.
         </p>
           </div>
         </div>

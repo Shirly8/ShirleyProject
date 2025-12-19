@@ -16,7 +16,7 @@ const facts: Fact[] = [
   {
     id: 1,
     icon: <Music size={40} />,
-    text: "I really like to songwrite, singing, and produce my own music.",
+    text: "I write songs, sing, and produce my own music.",
     isLie: true,
     flipText: "I have my own studio and record my own music.",
 
@@ -24,7 +24,7 @@ const facts: Fact[] = [
   {
     id: 2,
     icon: <Globe size={40} />,
-    text: "I've been on exchange in UK (University of Lancaster) for 1 semester.",
+    text: "I spent a semester on exchange at the University of Lancaster in the UK.",
     isLie: false,
     flipText: "I was supposed to go on exchange in UK but I accepted this internship instead.",
   },

@@ -14,27 +14,27 @@ const App: React.FC = () => {
         
         <h2>2024 - Responsible AI Team</h2>
         <p>
-          Worked on the  AI Trust Platform that featured 3 microservice: 
+          Worked on the AI Data Trust Platform—PII detection, synthetic data generation, and job management. The platform processes sensitive customer data, so everything needed to be fast, reliable, and privacy-compliant.
         </p>
 
-        <h3>Personal Identifiable Identity (PII) Detection</h3>
+        <h3>Coordinator Service & PII Detection</h3>
         <p>
-        <li>Developed distributed task queue and parallelized PII detection</li>
-        <li>Integrated Microsoft Presidio for NER-based PII detection & redaction.</li>
+        <li>Extended the Coordinator Service (Flask) to accept JSON and Parquet files. Fixed 404 delays by moving job creation from Airflow to Coordinator—jobs marked CREATED instantly, then Airflow updates to RUNNING once DAG starts.</li>
+        <li>Implemented Airflow DAG tasks for asynchronous PII detection using Celery workers and Microsoft Presidio. Handled failures gracefully—if one worker crashes, the job retries, not fails the batch. Debugged Redis connection timeout issues that were causing workers to hang.</li>
         </p>
 
         <h3>Synthetic Data Generation</h3>
         <p>
-        <li>Developed generative adversarial network (GAN) pipeline to generate synthetic customer data</li>
-        <li>Applied pandas & regex masking for dataset anonymization.</li>
+        <li>Built data preprocessing pipeline using pandas and regex masking to prepare anonymized datasets for the team's GAN-based synthetic data generator. Preprocessed data, applied PII masking, validated statistical distributions needed for GAN training.</li>
+        <li>Optimized regex patterns with precompiled regex using `re.compile()` for performance improvement. Iterated on patterns to catch different formats while preserving data utility for ML training.</li>
         </p>
 
 
-        <h3>Job Manager – Database & API Optimization</h3>
+        <h3>Job Manager</h3>
         <p>
-        <li>Designed SQL schema and implemented CRUD operations</li>
-          <li>Modularized APIs with Flask Blueprint and documented via Swagger UI</li>
-          <li>Streamlined file ingestion and retrieval in the data warehouse/data lake</li>
+        <li>Refactored core tables to support new PII detection features. Implemented CRUD operations with SQLAlchemy on MariaDB, handling job lifecycle transitions: CREATED → RUNNING → SUCCESS/FAILED with timestamp logging.</li>
+          <li>Organized APIs with Flask Blueprint, documented with Swagger. Fixed N+1 lookups by replacing separate queries with proper joins and eager loading. Added Redis caching for frequently accessed data.</li>
+          <li>Optimized file ingestion and retrieval from S3. Implemented a two-tier cache: Redis for hot data (24hr TTL), S3 for cold data.</li>
           </p>
       </div>
 
@@ -63,7 +63,7 @@ const App: React.FC = () => {
           <li>Redis</li>
           <li>Amazon S3</li>
           <li>Docker</li>
-          <li>Apache Airflow</li>
+          <li>Flask</li>
 
         </ul>
         </h3>
