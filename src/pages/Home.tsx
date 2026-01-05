@@ -4,15 +4,18 @@ import mail from '/HomeAssets/mail.png'
 import linkedin from '/HomeAssets/linkedin.png'
 import git from '/HomeAssets/git.png'
 import headshot from '/HomeAssets/headshot.png'
-import { useEffect, useRef, useState, Suspense, lazy } from "react";
+import { useEffect, useState } from "react";
 import { motion } from 'framer-motion';
 import AuroraHover from '../components/AuroraHover';
 import send from '/HomeAssets/send.png';
 import headshot2 from '/HomeAssets/headshot2.png'
 import emailjs from '@emailjs/browser';
+import WorkSection from '../components/WorkSection';
 // import FunFacts from './FunFacts';
+import '../components/WorkSection.css'
 
-const TimelineLazy = lazy(() => import('../components/TimelineSlider'));
+const texts = ["Hi! I'm Shirley Huang", "Hi! I'm Bi Yi Huang"];
+const baseText = "Hi! I'm ";
 
 function App() {
 
@@ -58,32 +61,12 @@ function App() {
     });
   }
   
-  const timelineSentinelRef = useRef<HTMLDivElement | null>(null);
-  const [showTimeline, setShowTimeline] = useState(false);
-
-  useEffect(() => {
-    const el = timelineSentinelRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setShowTimeline(true);
-          io.disconnect();
-        }
-      })
-    }, { rootMargin: '200px' });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
 
   // Typing animation state
   const [typingText, setTypingText] = useState('Hi! I\'m ');
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
-
-  const texts = ["Hi! I'm Shirley Huang", "Hi! I'm Bi Yi Huang"];
-  const baseText = "Hi! I'm ";
 
   useEffect(() => {
     const currentFullText = texts[currentIndex];
@@ -99,8 +82,8 @@ function App() {
     } else if (isDeleting && currentLength > baseText.length) {
       // Deleting backward
       const timeout = setTimeout(() => {
-        setTypingText(targetText.slice(0, currentLength - 1));
-      }, 50);
+        setTypingText(typingText.slice(0, currentLength - 1));
+      }, 75);
       return () => clearTimeout(timeout);
     } else if (!isDeleting && currentLength === targetText.length) {
       // Finished typing, wait then start deleting
@@ -116,7 +99,7 @@ function App() {
       }, 500);
       return () => clearTimeout(timeout);
     }
-  }, [typingText, isDeleting, currentIndex, texts, baseText]);
+  }, [typingText, isDeleting, currentIndex]);
 
   // Cursor blink animation
   useEffect(() => {
@@ -181,14 +164,14 @@ function App() {
     <div
         className="right-side">
 
-      <h2>Developer <span className="highlight">in Toronto</span></h2>
+      <h2><span className="highlight">Product-Oriented</span> Software Engineer</h2>
         <h3 style = {{fontSize: "15px"}}>
-          <strong>📍 Toronto, Ontario </strong> <br></br>
+          <strong>📍 Toronto, Canada </strong> <br></br> 
+          <strong> 🎓 Carleton University </strong> <br></br>
           <strong>💻 Computer Science + Business Minor</strong>
           <br />
-        <div style = {{marginTop: "15px"}}> I build things that work. Currently at Intuit building GitOps tooling. Previously worked on fraud detection at RBC and responsible AI at Borealis. </div>
-        </h3>
-  
+<div style = {{marginTop: "15px"}}> I build software where engineering and design reinforce each other through clean systems, thoughtful UX, and practical features. There's nothing better than watching something I built come together, go live, and solve real problems. </div>        </h3>
+
 
         <motion.div
           className="boxes"
@@ -200,17 +183,16 @@ function App() {
           <motion.div className="box" variants={boxItem}>
             <h3 className = "boxheading">Programming</h3>
             <p className = "boxtext">
-              JavaScript, TypeScript, Python, Go, SQL, MongoDB, C, C++, Java, Node.js,
-              Express.js, Angular, React, HTML, CSS, SPFx, ASP.NET
+              TypeScript, JavaScript, Python, Java, Go, C#, C/C++, SQL, HTML/CSS
             </p>
           </motion.div>
           <motion.div className="box" variants={boxItem}>
-            <h3 className = "boxheading">Business</h3>
-            <p className = "boxtext">Project Management, Agile Development, Strategic Planning</p>
+            <h3 className = "boxheading">Tech</h3>
+            <p className = "boxtext">React, Node.js, Flask, PyTorch, Kubernetes, Docker, AWS, Git, PostgreSQL, Redis, Figma, Grafana</p>
           </motion.div>
           <motion.div className="box" variants={boxItem}>
-            <h3 className = "boxheading">Digital</h3>
-            <p className = "boxtext">Adobe Photoshop, Figma, Google Analytics, SEMRush, Shopify, WordPress</p>
+            <h3 className = "boxheading">Edge</h3>
+            <p className = "boxtext">End-to-end ownership, rapid iteration, technical storytelling, shipping under ambiguity, ruthless curiosity</p>
           </motion.div>
         </motion.div>
     </div>
@@ -219,18 +201,13 @@ function App() {
     </div>
 
 
-    <div ref={timelineSentinelRef}>
-      {showTimeline && (
-        <Suspense fallback={<div style={{ padding: 24, color: 'var(--color-text)' }}>Loading timeline…</div>}>
-          <TimelineLazy/>
-        </Suspense>
-      )}
-    </div>
+    <WorkSection />
 
 
     {/* <div>
       <FunFacts/>
     </div> */}
+
 
 
     <div className = "container2">

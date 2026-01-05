@@ -8,22 +8,22 @@ const IntuitPage: React.FC = () => {
       <div className="intuit-left-side">
         <div className="intuit-heading">
             <img src="/intuit.png" alt="Intuit Logo" className="intuit-logo" />
-            <h1>Intuit</h1>
+            <h1 style = {{color:"#0470b9"}}>Intuit</h1>
         </div>
 
-        <h2>2025 - Platform Engineering</h2>
+        <h2 style={{color: "#0470b9"}}>2025 - Platform Engineering</h2>
         <p style = {{color: "black"}}>
-          Worked on GitOps Promoter, an open-source project (argoproj-labs) for environment promotion across multi-cluster deployments. Developers spent hours figuring out what to promote. ArgoCD shows what's deployed, but not what needs promoting, what's stuck, or why something failed.
+          Worked on GitOps Promoter (open-source) for environment promotion across multi-cluster deployments. Teams had no standardized way to promote dev → staging → prod.
         </p>
 
-        <h3>React Dashboard & Argo CD Extension</h3>
+        <h3 className="intuit-heading-white">React UI (Full Ownership)</h3>
         <p style = {{color: "black"}}>
-          Built UI across 3 interfaces: <strong>Argo CD extension</strong>, <strong>standalone dashboard</strong>, and <strong>embedded web views</strong>. Built shared component library. Used <strong>Zustand</strong> for state management with real-time Kubernetes updates via WebSocket. Went through multiple iterations. First version showed too much. Final version shows promotion status, deployment history, and blocking issues in one view.
+          Built complete UI across 3 interfaces: <strong>Argo CD extension</strong>, <strong>standalone dashboard</strong>, <strong>embedded views</strong>. Created shared component library with reusable TypeScript components. Used <strong>Zustand</strong> for state + <strong>WebSockets</strong> for real-time K8s updates.
         </p>
 
-        <h3>Go Backend & Open Source</h3>
+        <h3 className="intuit-heading-white">Go Controller & Impact</h3>
         <p style = {{color: "black"}}>
-          Extended the Go Kubernetes controller with validation logic for multi-cluster rollouts. <strong>Go</strong> webserver handles API layer and integrates with ArgoCD. Uses <strong>Server-Sent Events</strong> for real-time deployment updates. Contributed to argoproj-labs/gitops-promoter. Now used by 5+ teams at Intuit and adopted by the CNCF Argo community.
+          Extended <strong>Go Kubernetes controller</strong> with multi-cluster validation logic. Contributed to argoproj-labs/gitops-promoter, adopted by CNCF Argo community. <strong>200+ monthly active developers</strong> across Intuit platform teams.
         </p>
       </div>
 

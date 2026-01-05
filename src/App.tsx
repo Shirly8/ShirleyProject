@@ -4,9 +4,9 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import TopBar from './components/TopBar';
 import ChatWidget from './components/ChatWidget';
+import WorkSection from './components/WorkSection';
 
 const Home = lazy(() => import('./pages/Home'));
-const TimelineSlider = lazy(() => import('./components/TimelineSlider'));
 const CanvaProject = lazy(() => import('./pages/CanvaProject'));
 
 const App: React.FC = () => {
@@ -17,7 +17,7 @@ const App: React.FC = () => {
         <Suspense fallback={<div style={{ padding: 24, color: 'var(--color-text)' }}>Loading…</div>}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/work" element={<TimelineSlider />} />
+            <Route path="/work" element={<WorkSection />} />
             <Route path="/project" element={<CanvaProject />} />
           </Routes>
         </Suspense>

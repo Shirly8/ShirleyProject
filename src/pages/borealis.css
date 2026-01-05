@@ -1,10 +1,11 @@
 .borealis-container {
   display: flex;
+  flex-direction: row-reverse;
   width: 100%;
   height: 100%;
   gap: 2rem;
   color: white;
-  background-image: url('../../HomeAssets/bg2.png');
+  background-color: transparent;
   margin-top: 0;
   box-sizing: border-box;
 }
@@ -22,27 +23,30 @@
 
 .borealis-left h1 {
   font-size: 4rem;
-  color: white;
-  margin-bottom: 10px;
+  color: #0625b6 !important;
+  margin: 0;
 }
-
-.borealis-left h3{
-  color: #1b3bff;
-  padding-top: 4%;
-  margin-bottom: 1%;
-}
-
-.borealis-left p{
-  margin: 0%;
-  font-size:13px;
-}
-
 
 .borealis-left h2 {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #1b3bff;
+  color: #0625b6 !important;
   margin-bottom: 15px;
+}
+
+.borealis-left h3{
+  color: #0625b6 !important;
+  padding-top: 2%;
+  margin-bottom: 1%;
+}
+
+.borealis-left p{
+  margin: 0;
+  font-size: 14px;
+}
+
+.borealis-left li {
+  margin-bottom: 0.5rem;
 }
 
 

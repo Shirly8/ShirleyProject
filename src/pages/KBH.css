@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   background-color: #f8f9fa;
-  color: #0c938b;
+  color: #2f7574;
   background-color: black;
   font-family: Arial, sans-serif;
   line-height: 1.5;
@@ -51,31 +51,34 @@
   border-radius: 8px;
 }
 
-.kbh-title{
+.kbh-container .kbh-title{
   font-size: 4rem;
+  margin: 0;
+  color: #2f7574 !important;
 }
 
-
-.kbh-subtitle{
-  font-size: 15px;
-  color: white;
+.kbh-container .kbh-subtitle{
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white !important;
+  margin-bottom: 15px;
 }
 
-.kbh-title,
-.kbh-subtitle,
-.kbh-heading {
-  margin: 0 0 10px;
-}
-
-.kbh-heading{
+.kbh-container .kbh-heading{
   font-weight: bolder;
+  padding-top: 2%;
+  margin-bottom: 1%;
+  color: #2f7574 !important;
 }
-
 
 .kbh-paragraph {
-  margin: 0 0 15px;
-  font-size: 0.7rem;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
 
+.kbh-paragraph li {
+  margin-bottom: 0.5rem;
 }
 
 /* Responsive Design */
@@ -113,9 +116,9 @@
   .magnified-image { width: 5%; }
 
   /* Smaller fonts on mobile */
-  .kbh-title { font-size: 1.75rem; }
-  .kbh-subtitle { font-size: 0.85rem; }
-  .kbh-heading { font-size: 0.95rem; }
+  .kbh-container .kbh-title { font-size: 1.75rem; color: #2f7574 !important; }
+  .kbh-container .kbh-subtitle { font-size: 0.85rem; color: white !important; }
+  .kbh-container .kbh-heading { font-size: 0.95rem; color: #2f7574 !important; }
   .kbh-paragraph { font-size: 0.75rem; }
   .kbh-title, .kbh-subtitle, .kbh-heading { margin: 0 0 6px; }
 }

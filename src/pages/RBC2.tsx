@@ -25,17 +25,17 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="rbc-container" style = {{paddingBottom: "30px"}}>
+    <div className="rbc-container rbc-container-reverse" style = {{paddingBottom: "30px"}}>
         {/* Left Side */}
       <div className="rbc-left-side">
-        <h1>RBC</h1>
-        <h2>2023 - Workforce Management SharePoint</h2>
+        <h1 style={{color: "#1d62c3"}}>RBC</h1>
+        <h2 style={{color: "#1d62c3"}}>2023 - Workforce Management</h2>
         <p>
-        Call center managers spent 2-3 days per cycle on manual scheduling. Juggling Excel trackers and disconnected SharePoint forms. Built a SharePoint site that automates the workflow and connects to Microsoft apps via Graph API. Had to understand how they actually worked, not what the docs said.
+        Built full-stack SharePoint solution automating scheduling for call-center managers. Connected to Microsoft apps via <strong>Graph API</strong>.
         </p>
 
         <div className = "image">
-          <img 
+          <img
           className = "laptop-image"
           src = "/shift.png"
           style = {{
@@ -44,18 +44,16 @@ const App: React.FC = () => {
             }}></img>
         </div>
 
-        <h3>What I Built</h3>
+        <h3>What I Built [SPFx, JavaScript, Python]</h3>
         <p>
-        Used <strong>SPFx, ASP.NET, and Node.js</strong> to build:
-
-          <li>Workforce Management Hub with 12 interactive pages. Auto-scheduling pulls availability from Outlook calendars via Microsoft Graph and generates schedules.</li>
-          <li>Shift scheduler tracks attendance and flags discrepancies. Integrates with Verint. Reverse engineered their undocumented API by watching network requests.</li>
-          <li>ETL pipeline migrates data from Tableau to Verint. Used SQL window functions to aggregate handle time and sentiment metrics.</li>
+          <li>20+ page Workforce Hub with custom SPFx Web Parts + Microsoft Graph integration. Auto-scheduler pulls Outlook availability, applies shift rules.</li>
+          <li>Shift-Forecasting Module: Analyzed Verint call-volume data with Python, embedded forecasts into SharePoint.</li>
+          <li>ETL Pipeline: Verint API → PostgreSQL → Tableau. Built Python scripts with SQL window functions for metrics aggregation.</li>
         </p>
 
-        <div className="rbc-tech-box">
+        <div className="rbc-tech-box rbc-tech-box-3d">
           <div className="rbc-text">
-          <p style = {{fontWeight: "bolder"}}> Managers went from spending days on planning to hours. SharePoint usage tripled because people actually found it useful. Now serves call advisors across multiple teams.
+          <p>Hub used by <strong>1,000+ call advisors</strong>. Automated ~60 weekly change requests.
         </p>
           </div>
         </div>

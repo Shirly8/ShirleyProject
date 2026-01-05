@@ -1,0 +1,65 @@
+.work-section-container {
+  width: 100%;
+  background-image: url('/HomeAssets/workBackground.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 80px 0;
+  box-sizing: border-box;
+  color: white;
+  margin-top: -20px;
+  
+}
+
+.work-section-title {
+  font-size: 4rem;
+  text-align: center;
+  color: var(--color-brand);
+  margin-bottom: 60px;
+  text-transform: uppercase;
+}
+
+.work-items {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Make each work item full-width/height and blend with background */
+.work-section-container > .work-items > * {
+  width: 100% !important;
+  min-height: 100vh !important;
+  background: transparent !important;
+  padding: 60px 7% !important;
+  box-sizing: border-box !important;
+}
+
+/* Override any black text in work components to white */
+.work-section-container h1,
+.work-section-container h2,
+.work-section-container h3,
+.work-section-container h4,
+.work-section-container p,
+.work-section-container li,
+.work-section-container strong {
+  color: white !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .work-section-container {
+    padding: 40px 5%;
+  }
+
+  .work-section-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+
+  .work-items {
+    gap: 60px;
+  }
+}

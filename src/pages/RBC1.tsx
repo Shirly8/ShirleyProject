@@ -30,36 +30,33 @@ const App: React.FC = () => {
 
       {/* Left Side */}
       <div className="rbc-left-side">
-        <h1>RBC</h1>
-        <h2>2024 - Core and Real-Time Payment AI Solution</h2>
+        <h1 style={{color: "#1d62c3"}}>RBC</h1>
+        <h2 style={{color: "#1d62c3"}}>2024 - AI Payment Abuse Detection (POC)</h2>
         <p>
-          Built abuse detection for e-Transfer transactions. Payment memos were being used for harassment. Needed to catch abuse in real time without slowing down legitimate payments.
+          Worked on POC abuse detection for e-Transfer memos processing <strong>1M+ transactions</strong>. Payment memos were being used for harassment — needed automated detection at scale.
         </p>
 
-        <h3>RoBERTa Model + LLM Validation</h3>
+        <h3>Model Training & Tuning</h3>
         <p>
-        Compared three transformer models on e-Transfer memos. <strong>RoBERTa</strong> worked best for short, informal messages. Added <strong>Meta Llama 3.1</strong> to review uncertain cases. Fast classification first, then deep review for ambiguous ones. The LLM catches what the classifier misses by understanding context.
-        </p>
-
-        <h3>Model Tuning</h3>
-        <p>
-          Initial training had accuracy issues. Class imbalance, wrong loss function, bad hyperparameters. Fixed with class weighting, binary cross-entropy for multi-label, and <strong>Optuna</strong> for hyperparameter search. Used <strong>Elastic Weight Consolidation</strong> so the model learns new patterns without forgetting old ones.
+        Trained 3 transformers (BERT, <strong>RoBERTa</strong>, XLNet) on 1M+ memos — RoBERTa won at 97% accuracy. Fixed class imbalance with weighting, tuned hyperparameters with <strong>Optuna</strong>. Added <strong>Meta Llama 3.1</strong> for edge cases.
         </p>
 
         <h3>Production Deployment</h3>
-        <p>Built REST API with <strong>FastAPI</strong>, deployed to Kubernetes. Built React demo with WebSockets for RBC's tech expo.</p>
+        <p>
+        Built <strong>FastAPI</strong> REST API returning abuse scores. Deployed to <strong>Kubernetes (OpenShift)</strong>, configured <strong>CloudWatch</strong> monitoring. Built React demo with WebSockets for Tech Expo — <strong>700+ live interactions</strong>.
+        </p>
 
         {/* Technologies Box */}
-        <div className="rbc-tech-box">
+        <div className="rbc-tech-box rbc-tech-box-3d">
           <div className="rbc-text">
-            <h3>Technologies</h3>
-            <p style = {{fontWeight: "bolder"}}>
-              <li>PyTorch Lightning</li> 
+            <h3 className="tech-heading-white">Technologies</h3>
+            <p>
+              <li>PyTorch Lightning</li>
               <li>HuggingFace Transformers</li>
               <li>FastAPI</li>
               <li>Docker</li>
               <li>Kubernetes</li>
-              <li>React</li></p>
+             </p>
           </div>
           <img src="/ai.png" alt="Technology illustration" />
         </div>
