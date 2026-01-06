@@ -81,6 +81,21 @@
   margin-bottom: 0.5rem;
 }
 
+.kbh-link {
+  color: #2f7574;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: rgba(47, 117, 116, 0.1);
+  transition: all 0.3s ease;
+}
+
+.kbh-link:hover {
+  background-color: rgba(47, 117, 116, 0.2);
+  text-decoration: underline;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .kbh-container {

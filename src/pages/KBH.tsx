@@ -23,7 +23,7 @@ const Home: React.FC = () => {
         <div className="kbh-middle">
           <h3 className="kbh-heading">Website & Growth</h3>
           <p className="kbh-paragraph">
-           Built www.KayBlairHospice.ca — analyzed funnel with Google Analytics, found 3-click friction killing conversions. Migrated to DonorPerfect with embedded forms and hit <strong>12K visits in first 5 months</strong>. Ran SEO optimization and grew newsletter via Constant Contact segmentation.
+           Built <a href="https://www.KayBlairHospice.ca" target="_blank" rel="noopener noreferrer" className="kbh-link">www.KayBlairHospice.ca</a> — analyzed funnel with Google Analytics, found 3-click friction killing conversions. Migrated to DonorPerfect with embedded forms and hit <strong>12K visits in first 5 months</strong>. Ran SEO optimization and grew newsletter via Constant Contact segmentation.
           </p>
         </div>
         <div className="kbh-bottom">
