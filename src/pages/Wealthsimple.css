@@ -79,6 +79,11 @@
   width: 100%;
   height: auto;
   border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.ws-image:hover {
+  transform: scale(1.1);
 }
 
 /* Impact Box */
@@ -163,5 +168,10 @@
   .ws-tech-box {
     width: 90%;
     justify-content: center;
+  }
+
+  /* Disable zoom on mobile */
+  .ws-image:hover {
+    transform: none;
   }
 }

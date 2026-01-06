@@ -10,16 +10,19 @@
 .home-container {
   display: flex;
   width: 100vw;
+  max-width: 100%;
   color: var(--color-text);
   padding: 0% 7%;
   box-sizing: border-box;
   height: 1000px;
   margin-top: -175px;
+  overflow-x: hidden;
 }
 
 .container3 {
   display: flex;
   width: 100vw;
+  max-width: 100%;
   margin-top: 100px;
   height: 100vh;
   color: var(--color-text);
@@ -28,6 +31,7 @@
   background-image: url('../../HomeAssets/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-x: hidden;
 }
 
 
@@ -337,10 +341,18 @@ p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  /* Fix horizontal white space */
+  body, html {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
   .container{
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
     border: 2px solid orange;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .home-container{
@@ -358,16 +370,17 @@ p {
   .iframe-wrapper {
     height:40vh;
     /* border: 2px solid red; */
+    margin-bottom: 50px; /* Add space before KBH section */
   }
 
   .canva-embed{
-    
+
 
   }
   .container2{
     margin-top: -300px;
-    margin-bottom: -100px;
-
+    margin-bottom: 100px; /* Increase bottom margin to prevent overlap with KBH */
+    padding-bottom: 50px;
   }
 
 

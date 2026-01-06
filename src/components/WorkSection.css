@@ -52,6 +52,7 @@
 @media (max-width: 768px) {
   .work-section-container {
     padding: 40px 5%;
+    padding-bottom: 200px;
   }
 
   .work-section-title {
@@ -60,6 +61,6 @@
   }
 
   .work-items {
-    gap: 60px;
+    gap: 20px;
   }
 }

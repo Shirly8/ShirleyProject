@@ -1,29 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './RBC.css';
 
 const App: React.FC = () => {
-
-  const [magnifierStyle, setMagnifierStyle] = useState<React.CSSProperties>({
-    display: 'none',
-  });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const rect = e.currentTarget.getBoundingClientRect(); // Get image container dimensions
-    const x = e.clientX - rect.left; // Mouse X position within the image
-    const y = e.clientY - rect.top; // Mouse Y position within the image
-
-    setMagnifierStyle({
-      display: 'block',
-      top: `${y}px`,
-      left: `${x}px`,
-      backgroundPosition: `-${x}px -${y}px`,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setMagnifierStyle({ display: 'none' });
-  };
-
   return (
     <div className="rbc-container"
         style = {{paddingBottom: "50px"}}>
@@ -64,30 +42,11 @@ const App: React.FC = () => {
 
       {/* Right Side */}
       <div className="rbc-right-side">
-        <div
-          className="rbc-image-container"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-        >
-          <img
-            src="/model.png"
-            alt="AI Payment Solution"
-            className="rbc-laptop-image"
-          />
-          <div className="rbc-magnifier" style={magnifierStyle}>
-            <img
-              src="/model.png"
-              alt="AI Payment Solution"
-              className="rbc-laptop-abuse-image"
-              style={{
-                position: 'absolute',
-                left: `-${magnifierStyle.left}`,
-                top: `-${magnifierStyle.top}`,
-                // size controlled via CSS
-              }}
-            />
-          </div>
-        </div>
+        <img
+          src="/model.png"
+          alt="AI Payment Solution"
+          className="rbc-laptop-image"
+        />
       </div>
     </div>
   );

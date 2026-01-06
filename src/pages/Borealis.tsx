@@ -13,17 +13,22 @@ const BorealisPage: React.FC = () => {
 
         <h2 style={{color: "#0625b6"}}>2024 - Responsible AI</h2>
         <p>
-          Contributed to a platform for detecting sensitive information and generating synthetic data for banking. Enabled teams to safely use realistic test data without exposing real customer information.
+          Built platform for detecting sensitive data in banking datasets. Enabled model training on realistic data without exposing real customer information.
         </p>
 
-        <h3 style={{color: "#0625b6"}}>PII Detection Pipeline</h3>
+        <h3 style={{color: "#0625b6"}}>Pipeline Reliability</h3>
         <p>
-          Improved reliability of the data processing pipeline by fixing a critical issue where worker crashes caused 10-minute delays during sensitive data detection. Implemented retry mechanisms and better job handling, ensuring <strong>continuous processing without blocking batches</strong>.
+          Fixed critical issue where worker crashes caused <strong>10-minute processing delays</strong>. Implemented retry logic and health checks in Celery tasks. Batches now process continuously without blocking downstream jobs.
         </p>
 
-        <h3 style={{color: "#0625b6"}}>Performance & Data Pipeline</h3>
+        <h3 style={{color: "#0625b6"}}>Job Orchestration</h3>
         <p>
-          Refactored data routing and caching to improve efficiency and stability. Optimized workflows for processing sensitive data while maintaining security and compliance standards.
+          Refactored database schema with SQLAlchemy to track job states (CREATED → RUNNING → SUCCESS/FAILED). Built Flask endpoints for job monitoring. Connected Airflow DAGs to Kafka for real-time status updates.
+        </p>
+
+        <h3 style={{color: "#0625b6"}}>Health Monitoring</h3>
+        <p>
+          Built health check endpoints to detect stalled workers before they impact batch processing. Integrated monitoring hooks into Airflow orchestration for early failure detection.
         </p>
       </div>
 

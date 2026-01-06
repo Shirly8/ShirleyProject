@@ -3,8 +3,8 @@ import { useInView } from "react-intersection-observer";
 import "./About.css";
 
 const About: React.FC = () => {
-  const { ref: aboutRef, inView: aboutInView } = useInView({ triggerOnce: true });
-  const { ref: rightSideRef, inView: rightSideInView } = useInView({ triggerOnce: true });
+  const { ref: aboutRef, inView: aboutInView } = useInView({ triggerOnce: false });
+  const { ref: rightSideRef, inView: rightSideInView } = useInView({ triggerOnce: false });
 
   
   return (

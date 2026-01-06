@@ -25,7 +25,7 @@ const WealthsimplePage: React.FC = () => {
 
         <h3 className="ws-heading-white">Observability & Reliability</h3>
         <p>
-          Improved monitoring and added automatic fallback mechanisms to reduce downtime. The updates increased availability and provided teams with better operational insights, achieving <strong>99% uptime</strong> across key services.
+          Improved monitoring by adding <strong>Datadog tags</strong> and creating custom dashboards for real-time service health tracking (visible in the image on the left). Implemented automatic fallback mechanisms to reduce downtime, achieving <strong>99% uptime</strong> across key services.
         </p>
       </div>
 

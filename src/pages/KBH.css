@@ -90,7 +90,7 @@
     padding: 18px 16px 8px; /* tighter top/bottom */
     row-gap: 0; /* remove vertical gap between sections */
     height: 100%; /* match timeline slide height */
-    
+
   }
 
   .kbh-left-side,
@@ -109,7 +109,7 @@
   .kbh-image, .kbh-image2 { max-width: 70%; }
 
   /* Make the secondary image smaller on mobile */
-  .kbh-image2 { max-width: 55%; }
+  .kbh-image2 { max-width: 55%; margin-top: 100px; }
 
   /* .kbh-image2 { display:none; } */
 

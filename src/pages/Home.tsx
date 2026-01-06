@@ -201,7 +201,7 @@ function App() {
     </div>
 
 
-    <WorkSection />
+    <WorkSection showProjectHeader={true} />
 
 
     {/* <div>
@@ -218,7 +218,6 @@ function App() {
     src="https://www.canva.com/design/DAGFPbHd8vU/OOI0WAeYvV7EdlEv0J_FPA/view?embed"
     className="canva-embed">
   </iframe>
-    {/* Desktop-only interactive overlay inside the laptop area (temporarily disabled)
     <div className="laptop-overlay" aria-hidden={false}>
       <iframe
         src="https://wisests.shirleyproject.com/decision-maker"
@@ -228,7 +227,7 @@ function App() {
         className="overlay-embed"
       />
     </div>
-    */}
+   
 </div>
 
       </div>
