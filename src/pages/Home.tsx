@@ -218,7 +218,7 @@ function App() {
     src="https://www.canva.com/design/DAGFPbHd8vU/OOI0WAeYvV7EdlEv0J_FPA/view?embed"
     className="canva-embed">
   </iframe>
-    <div className="laptop-overlay" aria-hidden={false}>
+    {/* <div className="laptop-overlay" aria-hidden={false}>
       <iframe
         src="https://wisests.shirleyproject.com/decision-maker"
         title="Interactive project preview"
@@ -226,7 +226,7 @@ function App() {
         allow="autoplay; fullscreen"
         className="overlay-embed"
       />
-    </div>
+    </div> */}
    
 </div>
 
