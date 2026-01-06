@@ -51,6 +51,15 @@
   border-radius: 8px;
 }
 
+.kbh-image {
+  transition: transform 0.3s ease-in-out;
+  cursor: zoom-in;
+}
+
+.kbh-image:hover {
+  transform: scale(1.5);
+}
+
 .kbh-container .kbh-title{
   font-size: 4rem;
   margin: 0;
@@ -136,4 +145,9 @@
   .kbh-container .kbh-heading { font-size: 0.95rem; color: #2f7574 !important; }
   .kbh-paragraph { font-size: 0.75rem; }
   .kbh-title, .kbh-subtitle, .kbh-heading { margin: 0 0 6px; }
+
+  /* Disable zoom on mobile */
+  .kbh-image:hover {
+    transform: none;
+  }
 }

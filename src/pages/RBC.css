@@ -152,7 +152,7 @@
 }
 
 .rbc-laptop-image:hover {
-  transform: scale(2);
+  transform: scale(1.5);
 }
 
 .rbc-sharepoint-image {
@@ -163,7 +163,7 @@
 }
 
 .rbc-sharepoint-image:hover {
-  transform: scale(2);
+  transform: scale(1.5);
 }
 
 
