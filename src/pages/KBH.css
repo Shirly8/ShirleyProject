@@ -80,6 +80,10 @@
   color: #2f7574 !important;
 }
 
+.kbh-heading-normal {
+  font-weight: normal !important;
+}
+
 .kbh-paragraph {
   margin: 0;
   font-size: 14px;
@@ -133,7 +137,7 @@
   .kbh-image, .kbh-image2 { max-width: 70%; }
 
   /* Make the secondary image smaller on mobile */
-  .kbh-image2 { max-width: 55%; margin-top: 100px; }
+  .kbh-image2 { max-width: 55%; margin-top: 130px; }
 
   /* .kbh-image2 { display:none; } */
 

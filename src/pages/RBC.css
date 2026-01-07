@@ -71,12 +71,12 @@
   align-items: center;
   background-color: #1d62c3;
   border-radius: 8px;
-  padding: 0px 15px;
-  padding-right: 0px;
+  padding: 10px 15px;
   margin-right: 20px;
   margin-top: 20px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   min-height: 110px;
+  gap: 15px;
 }
 
 /* 3D effect for tech boxes */
@@ -114,12 +114,11 @@
 }
 
 .rbc-tech-box img {
-  width: 210px;
+  width: 100px;
   height: auto;
   border-radius: 8px;
   object-fit: cover;
-  margin-left: 10px;
-  margin-right: -20px;
+  flex-shrink: 0;
 }
 
 
@@ -241,9 +240,15 @@
     padding-bottom: 20px;
   }
 
-  /* Reduce technology box image size by 50% on mobile */
+  /* Reduce technology box image size on mobile and center it */
   .rbc-tech-box img {
-    width: 105px; /* 210px * 0.5 = 105px */
+    width: 70px;
+    align-self: center;
+  }
+
+  .rbc-tech-box {
+    align-items: center;
+    justify-content: center;
   }
 
   /* Make technology box text smaller, not bold, and tighter spacing */

@@ -16,17 +16,17 @@ const BorealisPage: React.FC = () => {
           Built platform for detecting sensitive data in banking datasets. Enabled model training on realistic data without exposing real customer information.
         </p>
 
-        <h3 style={{color: "#0625b6"}}>Pipeline Reliability</h3>
+        <h3 style={{color: "white"}}>Pipeline Reliability</h3>
         <p>
-          Fixed critical issue where worker crashes caused <strong>10-minute processing delays</strong>. Implemented retry logic and health checks in Celery tasks. Batches now process continuously without blocking downstream jobs.
+          Fixed critical issue where worker crashes caused <strong>10-minute processing delays</strong>. Implemented retry logic. Batches now process continuously without blocking downstream jobs.
         </p>
 
-        <h3 style={{color: "#0625b6"}}>Job Orchestration</h3>
+        <h3 style={{color: "white"}}>Job Orchestration</h3>
         <p>
-          Refactored database schema with SQLAlchemy to track job states (CREATED → RUNNING → SUCCESS/FAILED). Built Flask endpoints for job monitoring. Connected Airflow DAGs to Kafka for real-time status updates.
+          Refactored database schema with SQLAlchemy to track job states (CREATED → RUNNING → SUCCESS/FAILED). Migrated <strong>11 services</strong> to a unified routing layer, improving consistency and reducing deployment issues. Connected Airflow DAGs to Kafka for real-time status updates.
         </p>
 
-        <h3 style={{color: "#0625b6"}}>Health Monitoring</h3>
+        <h3 style={{color: "white"}}>Health Monitoring</h3>
         <p>
           Built health check endpoints to detect stalled workers before they impact batch processing. Integrated monitoring hooks into Airflow orchestration for early failure detection.
         </p>

@@ -23,21 +23,6 @@ const App: React.FC = () => {
         <p>
         Built <strong>FastAPI</strong> REST API returning abuse scores. Deployed to <strong>Kubernetes (OpenShift)</strong>, configured <strong>CloudWatch</strong> monitoring. Built React demo with WebSockets for Tech Expo — <strong>700+ live interactions</strong>.
         </p>
-
-        {/* Technologies Box */}
-        <div className="rbc-tech-box rbc-tech-box-3d">
-          <div className="rbc-text">
-            <h3 className="tech-heading-white">Technologies</h3>
-            <p>
-              <li>PyTorch Lightning</li>
-              <li>HuggingFace Transformers</li>
-              <li>FastAPI</li>
-              <li>Docker</li>
-              <li>Kubernetes</li>
-             </p>
-          </div>
-          <img src="/ai.png" alt="Technology illustration" />
-        </div>
       </div>
 
       {/* Right Side */}

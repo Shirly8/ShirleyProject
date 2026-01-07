@@ -193,6 +193,7 @@
   .headingandlogo{
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   .headingandlogo img {
@@ -201,7 +202,8 @@
   }
 
   .impact{
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(6, 37, 182, 0.3);
   }
 
 
