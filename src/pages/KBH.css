@@ -74,14 +74,9 @@
 }
 
 .kbh-container .kbh-heading{
-  font-weight: bolder;
   padding-top: 2%;
   margin-bottom: 1%;
   color: #2f7574 !important;
-}
-
-.kbh-heading-normal {
-  font-weight: normal !important;
 }
 
 .kbh-paragraph {
