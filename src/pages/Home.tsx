@@ -165,12 +165,12 @@ function App() {
         className="right-side">
 
       <h2><span className="highlight">Product-Oriented</span> Software Engineer</h2>
-        <h3 style = {{fontSize: "15px"}}>
-          <strong>📍 Toronto, Canada </strong> <br></br> 
-          <strong> 🎓 Carleton University </strong> <br></br>
-          <strong>💻 Computer Science + Business Minor</strong>
+        <h3 style = {{fontSize: "15px", fontWeight: "300"}}>
+          📍 Toronto, Canada <br></br>
+          🎓 Carleton University <br></br>
+          💻 Computer Science + Business Minor
           <br />
-<div style = {{marginTop: "15px"}}> I build software where engineering and design reinforce each other through clean systems, thoughtful UX, and practical features. There's nothing better than watching something I built come together, go live, and solve real problems. </div>        </h3>
+<div style = {{marginTop: "15px", fontWeight: "100"}}> I build software where engineering and design reinforce each other through clean systems, thoughtful UX, and practical features. There's nothing better than watching something I built come together, go live, and solve real problems. </div>        </h3>
 
 
         <motion.div
@@ -274,8 +274,8 @@ function App() {
           </div>
         
         <div className="footer-section">
-          <h3>Shirley Huang</h3>
-          <h4>Software Engineer</h4>
+          <h3 style={{fontWeight: "300"}}>Shirley Huang</h3>
+          <h4 style={{fontWeight: "300"}}>Software Engineer</h4>
         </div>
       </div>
 
