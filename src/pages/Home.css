@@ -23,7 +23,7 @@
   display: flex;
   width: 100vw;
   max-width: 100%;
-  margin-top: 100px;
+  margin-top: 150px;
   height: 100vh;
   color: var(--color-text);
   padding: 0% 7% 20% 7%;
@@ -284,12 +284,6 @@ p {
   background-color: var(--color-bg);
   margin-top: -15px;
   z-index: 1;
-}
-
-.container2{
-  background-color: var(--color-brand)
-  
-
 }
 
 .iframe-wrapper {

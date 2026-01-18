@@ -13,6 +13,7 @@ import emailjs from '@emailjs/browser';
 import WorkSection from '../components/WorkSection';
 // import FunFacts from './FunFacts';
 import '../components/WorkSection.css'
+import Sparkles from '../components/Sparkles';
 
 const texts = ["Hi! I'm Shirley Huang", "Hi! I'm Bi Yi Huang"];
 const baseText = "Hi! I'm ";
@@ -122,17 +123,18 @@ function App() {
   } as const;
 
   return (
-    <>   
-  
+    <>
+
   {/*HOME PAGE*/}
   <div className="home-container">
+    <Sparkles intensity="light" />
   <div className="left-side">
     <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}>
       The Shirley <span className="highlight">Project</span>
     </motion.h1>
-    <motion.h3 
-      initial={{ opacity: 0, y: 24 }} 
-      animate={{ opacity: 1, y: 0 }} 
+    <motion.h3
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2, duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}
       style={{ minHeight: '1.5em' }}
     >
@@ -140,7 +142,7 @@ function App() {
       <span style={{ opacity: showCursor ? 1 : 0, marginLeft: '2px' }}>|</span>
     </motion.h3>
     <motion.div className="icons" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}>
-      <a aria-label="Email Shirley" href = "mailto:ShirleyHuang7@hotmail.com"><img loading="lazy" decoding="async" src={mail} alt="Mail"/> </a> 
+      <a aria-label="Email Shirley" href = "mailto:ShirleyHuang7@hotmail.com"><img loading="lazy" decoding="async" src={mail} alt="Mail"/> </a>
       <a aria-label="Shirley's LinkedIn" rel="noopener noreferrer" target="_blank" href = "https://www.linkedin.com/in/shirleyh11/"><img loading="lazy" decoding="async" src={linkedin} alt="LinkedIn" /> </a>
       <a aria-label="Shirley's GitHub" rel="noopener noreferrer" target="_blank" href = "https://github.com/Shirly8"> <img loading="lazy" decoding="async" src={git} alt="GitHub" /> </a>
     </motion.div>
@@ -232,10 +234,6 @@ function App() {
 
       </div>
 
-      
-
-  
-
     <div className="container3">
       
     <div className="left-side">
@@ -285,7 +283,7 @@ function App() {
 
       </div>
 
-      
+      <Sparkles intensity="light" />
 
     </>
   )
