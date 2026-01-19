@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Music, Globe, Heart } from "lucide-react";
 import "./FF.css";
 
 interface Fact {
@@ -9,32 +8,48 @@ interface Fact {
   text: string;
   isLie: boolean;
   flipText?: string;
-  
 }
+
+const MusicIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M9 18V5l12-2v13M9 9h12M6 18h.01" />
+  </svg>
+);
+
+const GlobeIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+);
+
+const HeartIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+  </svg>
+);
 
 const facts: Fact[] = [
   {
     id: 1,
-    icon: <Music size={40} />,
+    icon: <MusicIcon />,
     text: "I write songs, sing, and produce my own music.",
     isLie: true,
     flipText: "I have my own studio and record my own music.",
-
   },
   {
     id: 2,
-    icon: <Globe size={40} />,
+    icon: <GlobeIcon />,
     text: "I spent a semester on exchange at the University of Lancaster in the UK.",
     isLie: false,
     flipText: "I was supposed to go on exchange in UK but I accepted this internship instead.",
   },
   {
     id: 3,
-    icon: <Heart size={40} />,
+    icon: <HeartIcon />,
     text: "I own a dog named Machiatto",
     isLie: false,
     flipText: "I don't own a pet, but I used to raise a turtle named Turtle.",
-
   },
 ];
 
