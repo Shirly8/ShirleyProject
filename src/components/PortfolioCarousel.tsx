@@ -35,16 +35,18 @@ const portfolioItems: PortfolioItem[] = [
     title: 'affirmly',
     description: 'An AI therapeutic journaling app using Meta\'s Llama-3 LLM to turn journal entries into positive affirmations.',
     image: '/Portfolio/Affirmly.svg',
+    iframeUrl: 'https://affirmly-iota.vercel.app/',
     buttonColor: '#8c97ab',
     buttonLink: 'https://github.com/shirly8/affirmly',
   },
   {
     id: 4,
-    title: 'overtailored',
-    description: 'Tailor CVs and cover letters into professional LaTeX formats effortlessly with the power of Gemini AI.',
+    title: 'oceanBottle',
+    description: 'A sustainable water bottle tracking app that helps you stay hydrated and monitor your environmental impact.',
     image: '/Portfolio/Overtailored.svg',
-    buttonColor: '#000000',
-    buttonLink: 'https://github.com/Shirly8/OverTailored',
+    iframeUrl: 'https://ocean-bottle-nine.vercel.app/',
+    buttonColor: '#4a90e2',
+    buttonLink: 'https://ocean-bottle-nine.vercel.app/',
   },
   {
     id: 5,
@@ -130,18 +132,18 @@ const PortfolioCarouselComponent = () => {
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
         </div>
-      </div>
 
-      {/* Indicator Dots */}
-      <div className="carousel-indicators">
-        {portfolioItems.map((_, index) => (
-          <button
-            key={index}
-            className={`indicator-dot ${index === currentIndex ? 'active' : ''}`}
-            onClick={() => setCurrentIndex(index)}
-            aria-label={`Go to project ${index + 1}`}
-          />
-        ))}
+        {/* Indicator Dots */}
+        <div className="carousel-indicators">
+          {portfolioItems.map((_, index) => (
+            <button
+              key={index}
+              className={`indicator-dot ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(index)}
+              aria-label={`Go to project ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
