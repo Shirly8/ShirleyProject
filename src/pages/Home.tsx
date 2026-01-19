@@ -14,6 +14,7 @@ import WorkSection from '../components/WorkSection';
 // import FunFacts from './FunFacts';
 import '../components/WorkSection.css'
 import Sparkles from '../components/Sparkles';
+import PortfolioCarousel from '../components/PortfolioCarousel';
 
 const texts = ["Hi! I'm Shirley Huang", "Hi! I'm Bi Yi Huang"];
 const baseText = "Hi! I'm ";
@@ -213,26 +214,20 @@ function App() {
 
 
     <div className = "container2">
-    
-<div className="iframe-wrapper">
-  <iframe
-    loading="lazy"
-    src="https://www.canva.com/design/DAGFPbHd8vU/OOI0WAeYvV7EdlEv0J_FPA/view?embed"
-    className="canva-embed">
-  </iframe>
-    {/* <div className="laptop-overlay" aria-hidden={false}>
-      <iframe
-        src="https://wisests.shirleyproject.com/decision-maker"
-        title="Interactive project preview"
-        tabIndex={-1}
-        allow="autoplay; fullscreen"
-        className="overlay-embed"
-      />
-    </div> */}
-   
-</div>
 
+      <PortfolioCarousel />
+
+      {/* COMMENTED OUT - Replaced with PortfolioCarousel
+      <div className="iframe-wrapper">
+        <iframe
+          loading="lazy"
+          src="https://www.canva.com/design/DAGFPbHd8vU/OOI0WAeYvV7EdlEv0J_FPA/view?embed"
+          className="canva-embed">
+        </iframe>
       </div>
+      */}
+
+    </div>
 
     <div className="container3">
       

@@ -5,9 +5,9 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import TopBar from './components/TopBar';
 import ChatWidget from './components/ChatWidget';
 import WorkSection from './components/WorkSection';
+import PortfolioCarousel from './components/PortfolioCarousel';
 
 const Home = lazy(() => import('./pages/Home'));
-const CanvaProject = lazy(() => import('./pages/CanvaProject'));
 
 const App: React.FC = () => {
   return (
@@ -18,7 +18,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/work" element={<WorkSection />} />
-            <Route path="/project" element={<CanvaProject />} />
+            <Route path="/project" element={<PortfolioCarousel />} />
           </Routes>
         </Suspense>
         <ChatWidget />
