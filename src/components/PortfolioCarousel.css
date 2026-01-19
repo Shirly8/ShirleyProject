@@ -27,6 +27,12 @@
   align-items: center;
   min-width: 100%;
   min-height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.carousel-content.loaded {
+  opacity: 1;
 }
 
 .device-image {

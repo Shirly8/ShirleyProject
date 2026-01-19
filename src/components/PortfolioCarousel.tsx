@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './PortfolioCarousel.css';
 
 interface PortfolioItem {
@@ -52,6 +52,22 @@ const portfolioItems: PortfolioItem[] = [
 
 export default function PortfolioCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Preload images on mount
+  useEffect(() => {
+    portfolioItems.forEach((item) => {
+      const img = new Image();
+      img.src = item.image;
+    });
+  }, []);
+
+  // Reset loaded state when index changes
+  useEffect(() => {
+    setIsLoaded(false);
+    const timer = setTimeout(() => setIsLoaded(true), 50);
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? portfolioItems.length - 1 : prev - 1));
@@ -74,7 +90,7 @@ export default function PortfolioCarousel() {
         </div>
 
         {/* SVG Image - Full Screen */}
-        <div className={`carousel-content ${currentItem.iframeUrl ? 'has-iframe' : ''}`}>
+        <div className={`carousel-content ${currentItem.iframeUrl ? 'has-iframe' : ''} ${isLoaded ? 'loaded' : ''}`}>
           <img src={currentItem.image} alt={currentItem.title} className="device-image" loading="lazy" />
           {currentItem.iframeUrl && (
             <div className="iframe-overlay">
