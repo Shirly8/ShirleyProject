@@ -53,6 +53,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'servicer',
     description: 'AI-powered platform transforming customer service for service-based businesses.',
     image: '/Portfolio/Servicer.svg',
+    iframeUrl: 'https://servicer.vercel.app/',
     buttonColor: '#446074',
     buttonLink: 'https://servicer.vercel.app/',
   },
