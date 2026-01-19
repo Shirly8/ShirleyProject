@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo, useCallback } from 'react';
 import './PortfolioCarousel.css';
 
 interface PortfolioItem {
   id: number;
   title: string;
+  description: string;
   image: string;
   iframeUrl?: string;
   buttonColor: string;
@@ -13,7 +14,8 @@ interface PortfolioItem {
 const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
-    title: 'Lyrical',
+    title: 'lyrical',
+    description: 'Using Spotify and Genius API to transform music streaming through storytelling.',
     image: '/Portfolio/Lyrical.svg',
     iframeUrl: 'https://music.shirleyproject.com/',
     buttonColor: '#a15ef0',
@@ -21,7 +23,8 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 2,
-    title: 'Wisest',
+    title: 'wisest',
+    description: 'A solution to indecisiveness. Make better decisions whenever you need to.',
     image: '/Portfolio/Wisest.svg',
     iframeUrl: 'https://wisests.shirleyproject.com/decision-maker',
     buttonColor: '#d2514d',
@@ -29,28 +32,31 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 3,
-    title: 'Affirmly',
+    title: 'affirmly',
+    description: 'An AI therapeutic journaling app using Meta\'s Llama-3 LLM to turn journal entries into positive affirmations.',
     image: '/Portfolio/Affirmly.svg',
     buttonColor: '#8c97ab',
     buttonLink: 'https://github.com/shirly8/affirmly',
   },
   {
     id: 4,
-    title: 'Overtailored',
+    title: 'overtailored',
+    description: 'Tailor CVs and cover letters into professional LaTeX formats effortlessly with the power of Gemini AI.',
     image: '/Portfolio/Overtailored.svg',
     buttonColor: '#000000',
     buttonLink: 'https://github.com/Shirly8/OverTailored',
   },
   {
     id: 5,
-    title: 'Servicer',
+    title: 'servicer',
+    description: 'AI-powered platform transforming customer service for service-based businesses.',
     image: '/Portfolio/Servicer.svg',
     buttonColor: '#446074',
     buttonLink: 'https://servicer.vercel.app/',
   },
 ];
 
-export default function PortfolioCarousel() {
+const PortfolioCarouselComponent = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -69,13 +75,13 @@ export default function PortfolioCarousel() {
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? portfolioItems.length - 1 : prev - 1));
-  };
+  }, []);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev === portfolioItems.length - 1 ? 0 : prev + 1));
-  };
+  }, []);
 
   const currentItem = portfolioItems[currentIndex];
 
@@ -101,6 +107,12 @@ export default function PortfolioCarousel() {
               />
             </div>
           )}
+          <h2 className="project-title" style={{ color: currentItem.buttonColor }}>
+            {currentItem.title}
+          </h2>
+          <p className="project-description">
+            {currentItem.description}
+          </p>
           <a
             href={currentItem.buttonLink}
             target="_blank"
@@ -133,4 +145,6 @@ export default function PortfolioCarousel() {
       </div>
     </div>
   );
-}
+};
+
+export default memo(PortfolioCarouselComponent);

@@ -1,4 +1,3 @@
-import React from 'react';
 import './WorkSection.css';
 import RBC1 from "../pages/RBC1";
 import RBC2 from "../pages/RBC2";

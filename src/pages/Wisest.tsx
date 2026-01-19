@@ -1,14 +1,3 @@
-// import { useState } from 'react'
-
-function App() {
-
-  return (
-    <>
-      <div>
-        HELLO
-       </div>
-    </>
-  )
+export default function Wisest() {
+  return <div>Wisest Page</div>;
 }
-
-export default App

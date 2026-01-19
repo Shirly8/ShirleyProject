@@ -1,8 +1,8 @@
-import React from 'react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
-const TopBar: React.FC = () => {
+const TopBar = memo(() => {
   return (
     <header className="top-bar">
       <nav>
@@ -15,6 +15,8 @@ const TopBar: React.FC = () => {
       </nav>
     </header>
   );
-};
+});
+
+TopBar.displayName = 'TopBar';
 
 export default TopBar;

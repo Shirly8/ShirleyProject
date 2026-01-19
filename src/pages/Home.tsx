@@ -4,15 +4,13 @@ import mail from '/HomeAssets/mail.png'
 import linkedin from '/HomeAssets/linkedin.png'
 import git from '/HomeAssets/git.png'
 import headshot from '/HomeAssets/headshot.png'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { motion } from 'framer-motion';
 import AuroraHover from '../components/AuroraHover';
 import send from '/HomeAssets/send.png';
 import headshot2 from '/HomeAssets/headshot2.png'
 import emailjs from '@emailjs/browser';
 import WorkSection from '../components/WorkSection';
-// import FunFacts from './FunFacts';
-import '../components/WorkSection.css'
 import Sparkles from '../components/Sparkles';
 import PortfolioCarousel from '../components/PortfolioCarousel';
 
@@ -28,14 +26,14 @@ function App() {
   const [formError, setFormError] = useState<string | null>(null);
   
 
-  const handleTalkClick = () => {
-    setShowForm(!showForm);
+  const handleTalkClick = useCallback(() => {
+    setShowForm(prev => !prev);
     setShowSent(false);
-  };
+  }, []);
 
-  const isValidEmail = (value: string) => /.+@.+\..+/.test(value);
+  const isValidEmail = useCallback((value: string) => /.+@.+\..+/.test(value), []);
 
-  const handleSendClick = (e?: React.FormEvent) => {
+  const handleSendClick = useCallback((e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setFormError(null);
     if (!isValidEmail(email)) {
@@ -52,16 +50,14 @@ function App() {
       message: body,
       title: 'Contact Form'
     }, 'Bkzl1-q82jUL06M_y')
-    .then((result) => {
-      console.log('Email sent successfully!', result.text);
+    .then(() => {
       setShowSent(true);
       setShowForm(false);
     })
-    .catch((error) => {
-      console.log('Email failed:', error.text);
+    .catch(() => {
       setFormError('Failed to send. Please try again later.');
     });
-  }
+  }, [email, body, isValidEmail]);
   
 
   // Typing animation state
@@ -111,17 +107,17 @@ function App() {
     return () => clearInterval(cursorInterval);
   }, []);
 
-  const boxContainer = {
+  const boxContainer = useMemo(() => ({
     hidden: {},
     visible: {
       transition: { staggerChildren: 0.25, delayChildren: 0.1 }
     }
-  } as const;
+  } as const), []);
 
-  const boxItem = {
+  const boxItem = useMemo(() => ({
     hidden: { opacity: 0, x: 120, scale: 0.98 },
     visible: { opacity: 1, x: 0, scale: 1, transition: { duration: 1.1, ease: [0.2, 0.8, 0.2, 1] } }
-  } as const;
+  } as const), []);
 
   return (
     <>
@@ -200,33 +196,12 @@ function App() {
         </motion.div>
     </div>
 
-    {/* */}
     </div>
-
 
     <WorkSection showProjectHeader={true} />
 
-
-    {/* <div>
-      <FunFacts/>
-    </div> */}
-
-
-
-    <div className = "container2">
-
+    <div className="container2">
       <PortfolioCarousel />
-
-      {/* COMMENTED OUT - Replaced with PortfolioCarousel
-      <div className="iframe-wrapper">
-        <iframe
-          loading="lazy"
-          src="https://www.canva.com/design/DAGFPbHd8vU/OOI0WAeYvV7EdlEv0J_FPA/view?embed"
-          className="canva-embed">
-        </iframe>
-      </div>
-      */}
-
     </div>
 
     <div className="container3">

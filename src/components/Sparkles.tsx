@@ -59,7 +59,6 @@ export default function Sparkles({ intensity = 'light', lightMode = false }: Spa
   useEffect(() => {
     const container = containerRef.current;
     if (!container) {
-      console.error('Sparkles container not found');
       return;
     }
 

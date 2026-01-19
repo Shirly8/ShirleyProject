@@ -1,14 +1,3 @@
-// import { useState } from 'react'
-
-function App() {
-
-  return (
-    <>
-      <div>
-        HELLO
-       </div>
-    </>
-  )
+export default function Servicer() {
+  return <div>Servicer Page</div>;
 }
-
-export default App
