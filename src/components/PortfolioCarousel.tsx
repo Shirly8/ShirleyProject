@@ -75,7 +75,7 @@ export default function PortfolioCarousel() {
 
         {/* SVG Image - Full Screen */}
         <div className={`carousel-content ${currentItem.iframeUrl ? 'has-iframe' : ''}`}>
-          <img src={currentItem.image} alt={currentItem.title} className="device-image" />
+          <img src={currentItem.image} alt={currentItem.title} className="device-image" loading="lazy" />
           {currentItem.iframeUrl && (
             <div className="iframe-overlay">
               <iframe
