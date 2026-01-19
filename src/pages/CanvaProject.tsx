@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CanvaProject: React.FC = () => {
   return (
     <iframe

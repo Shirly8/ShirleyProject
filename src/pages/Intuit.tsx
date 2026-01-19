@@ -1,4 +1,3 @@
-import React from 'react';
 import './Intuit.css';
 
 const IntuitPage: React.FC = () => {

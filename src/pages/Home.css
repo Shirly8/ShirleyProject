@@ -78,10 +78,11 @@ h3 {
 }
 
 .icons img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   transition: transform var(--duration-200) var(--easing-standard);
+  will-change: transform;
 }
 
 .icons img:hover {
@@ -99,12 +100,6 @@ h3 {
   display: block;
   width: 75%;
   max-width: 100%;
-}
-
-.icons img {
-  width: 60px; 
-  height: 60px; 
-  will-change: transform;
 }
 
 

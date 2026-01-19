@@ -1,4 +1,3 @@
-import React from 'react';
 import './borealis.css';
 
 const BorealisPage: React.FC = () => {

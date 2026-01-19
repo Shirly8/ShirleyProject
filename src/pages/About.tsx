@@ -1,12 +1,30 @@
-import React from "react";
-import { useInView } from "react-intersection-observer";
+import { useEffect, useRef, useState } from "react";
 import "./About.css";
 
-const About: React.FC = () => {
-  const { ref: aboutRef, inView: aboutInView } = useInView({ triggerOnce: false });
-  const { ref: rightSideRef, inView: rightSideInView } = useInView({ triggerOnce: false });
+const About = () => {
+  const aboutRef = useRef<HTMLHeadingElement>(null);
+  const rightSideRef = useRef<HTMLDivElement>(null);
+  const [aboutInView, setAboutInView] = useState(false);
+  const [rightSideInView, setRightSideInView] = useState(false);
 
-  
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === aboutRef.current) {
+          setAboutInView(entry.isIntersecting);
+        }
+        if (entry.target === rightSideRef.current) {
+          setRightSideInView(entry.isIntersecting);
+        }
+      });
+    });
+
+    if (aboutRef.current) observer.observe(aboutRef.current);
+    if (rightSideRef.current) observer.observe(rightSideRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="About-container">
       {/* Left Side */}

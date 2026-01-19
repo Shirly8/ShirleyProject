@@ -1,4 +1,3 @@
-import React from 'react';
 import './Wealthsimple.css';
 
 const WealthsimplePage: React.FC = () => {

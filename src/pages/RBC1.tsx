@@ -1,4 +1,3 @@
-import React from 'react';
 import './RBC.css';
 
 const App: React.FC = () => {
