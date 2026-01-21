@@ -35,10 +35,20 @@
   --shadow-2: 0 10px 30px rgba(237, 154, 176, 0.25);
 
   --easing-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --easing-hover: cubic-bezier(0.23, 1, 0.32, 1);
   --duration-100: 120ms;
   --duration-200: 240ms;
   --duration-300: 360ms;
   --duration-400: 500ms;
+
+  /* Typography scale */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 48px;
 }
 
 a {
@@ -69,6 +79,11 @@ h1 {
   line-height: 1.1;
 }
 
+p {
+  font-weight: 100;
+  line-height: 1.6;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -78,14 +93,55 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all var(--duration-200) var(--easing-standard);
 }
 button:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+/* Unified button styles */
+.btn {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  transition: all var(--duration-200) var(--easing-standard);
+  font-family: inherit;
+}
+
+.btn-primary {
+  background-color: var(--color-brand);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #df7a96;
+  box-shadow: var(--shadow-2);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* 3D hover effect utility */
+.image-hover-3d {
+  transition: transform 0.4s var(--easing-hover), filter 0.4s ease;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.image-hover-3d:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-3deg) translateZ(20px) translateY(-8px);
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
 }
 
 @media (prefers-color-scheme: light) {

@@ -38,7 +38,7 @@
   color: #0625b6 !important;
   padding-top: 2%;
   margin-bottom: 1%;
-  font-weight: 100;
+  font-weight: 200;
 }
 
 .borealis-left p{
@@ -157,7 +157,7 @@
   padding: 8px 12px;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
   .borealis-container {
     margin-bottom: -50px; /* extend lower */
     padding: 12px 5% 12px; /* add more bottom padding */

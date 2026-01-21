@@ -1,8 +1,13 @@
 import './RBC.css';
+import { useState } from 'react';
+import ImageModal from '../components/ImageModal';
 
 const App: React.FC = () => {
+  const [expandedImage, setExpandedImage] = useState<string | null>(null);
+
   return (
-    <div className="rbc-container rbc-container-reverse" style = {{paddingBottom: "30px"}}>
+    <div className="rbc-container rbc-container-reverse" style = {{paddingBottom: "10px"}}>
+      <ImageModal isOpen={expandedImage !== null} imageSrc={expandedImage || ''} onClose={() => setExpandedImage(null)} />
         {/* Left Side */}
       <div className="rbc-left-side">
         <h1 style={{color: "#1d62c3"}}>RBC</h1>
@@ -15,9 +20,11 @@ const App: React.FC = () => {
           <img
           className = "laptop-image"
           src = "/shift.png"
+          onClick={() => setExpandedImage('/shift.png')}
           style = {{
             width: "80%",
-            padding: "5%"
+            padding: "5%",
+            cursor: "pointer"
             }}></img>
         </div>
 
@@ -40,6 +47,7 @@ const App: React.FC = () => {
           src="/sharepoint.png"
           alt="AI Payment Solution"
           className="rbc-sharepoint-image"
+          onClick={() => setExpandedImage('/sharepoint.png')}
         />
       </div>
     </div>

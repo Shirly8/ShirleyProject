@@ -51,25 +51,23 @@
   font-size: 1.2rem;
   font-weight: bold;
   color: #e6e1d8 !important;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
 .ws-left-side h3 {
-  color: #e6e1d8 !important;
-  padding-top: 2%;
-  margin-bottom: 1%;
   font-weight: 100;
-}
-
-.ws-left-side .ws-heading-white {
-  color: white !important;
-  padding-top: 2%;
-  margin-bottom: 1%;
+  color: #e6e1d8 !important;
+  margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 .ws-left-side p {
   margin: 0;
   font-size: 14px;
+  font-weight: 100;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: white;
 }
 
 .ws-left-side li {
@@ -80,11 +78,7 @@
   width: 100%;
   height: auto;
   border-radius: 8px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.ws-image:hover {
-  transform: scale(1.5);
+  cursor: pointer;
 }
 
 /* Impact Box */
@@ -137,9 +131,9 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: stretch;
-    padding: 50px 16px;
-    gap: 4px;
-    row-gap: 4px;
+    padding: 20px 16px;
+    gap: 0;
+    row-gap: 0;
     height: 100%;
   }
 
@@ -156,10 +150,10 @@
     justify-content: center;
   }
 
-  .ws-left-side h1 { font-size: 2rem; }
-  .ws-left-side h2 { font-size: 1.0rem; }
-  .ws-left-side h3 { font-size: 0.90rem; }
-  .ws-left-side p  { font-size: 12px; }
+  .ws-left-side h1 { font-size: 1.75rem; }
+  .ws-left-side h2 { font-size: 0.9rem; }
+  .ws-left-side h3 { font-size: 0.95rem; font-weight: bold; margin-bottom: 12px; }
+  .ws-left-side p  { font-size: 11px; }
 
   .ws-left-side { order: 1; height: 70%; display: flex; justify-content: flex-start; padding-top: 6px; margin: 0; }
   .ws-right-side { order: 2; height: 30%; display: flex; align-items: center; justify-content: center; margin: 0; }
@@ -171,8 +165,9 @@
     justify-content: center;
   }
 
-  /* Disable zoom on mobile */
+  /* Disable 3D effect on mobile */
   .ws-image:hover {
     transform: none;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
   }
 }

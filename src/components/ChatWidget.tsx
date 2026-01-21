@@ -321,17 +321,17 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
           }}
         >
           <div style={{ padding: '10px 12px', paddingRight: 40, borderBottom: '1px solid rgba(237,154,176,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', position: 'relative' }}>
-            <strong style={{ fontSize: 14 }}>{title}</strong>
-            <div 
-              style={{ 
-                position: 'relative', 
-                display: 'inline-flex', 
-                marginLeft: 6,
-                cursor: 'help'
-              }}
-              onMouseEnter={() => setShowInfoTooltip(true)}
-              onMouseLeave={() => setShowInfoTooltip(false)}
-            >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <strong style={{ fontSize: 14 }}>{title}</strong>
+              <div
+                style={{
+                  position: 'relative',
+                  display: 'inline-flex',
+                  cursor: 'help'
+                }}
+                onMouseEnter={() => setShowInfoTooltip(true)}
+                onMouseLeave={() => setShowInfoTooltip(false)}
+              >
               <svg
                 width="16"
                 height="16"
@@ -356,7 +356,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
                   style={{
                     position: 'absolute',
                     top: '100%',
-                    left: '-140px',
+                    left: 0,
                     marginTop: 8,
                     width: 280,
                     background: 'linear-gradient(135deg, rgba(0,0,0,0.95), rgba(237,154,176,0.15))',
@@ -369,7 +369,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
                     boxShadow: '0 8px 24px rgba(0,0,0,0.6), 0 0 0 1px rgba(237,154,176,0.2)',
                     zIndex: 1001,
                     backdropFilter: 'blur(12px)',
-                    pointerEvents: 'none'
+                    pointerEvents: 'auto'
                   }}
                 >
                   <div style={{ fontWeight: 600, color: '#ed9ab0', marginBottom: 6 }}>
@@ -391,11 +391,12 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ title = 'Ask me Anything' }) =>
                   </div>
                 </div>
               )}
+              </div>
             </div>
             <button
               aria-label="Close chat"
               onClick={() => setIsOpen(false)}
-              style={{ background: 'transparent', color: '#ed9ab0', border: 'none', cursor: 'pointer', position: 'absolute', right: 10, top: 8 }}
+              style={{ background: 'transparent', color: '#ed9ab0', border: 'none', cursor: 'pointer', position: 'absolute', right: 14, top: 12, fontSize: 16, padding: 0, width: 20, height: 20, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
               ✕
             </button>

@@ -160,9 +160,9 @@ p {
 /*CONCLUSION: */
 /* Left Side */
 .title-section h1 {
-  font-size: 5rem;
-  margin: 0 0 40px 0;
-  font-weight: 300;
+  font-size: 5.5em;
+  margin: 0;
+  font-weight: 400;
 }
 
 .title-section h2 {
@@ -181,25 +181,28 @@ p {
 
 .button-section button {
   padding: 10px 20px;
-  font-size: 10px;;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bolder;
+  font-size: 14px;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
   background-color: var(--color-brand);
-  border-radius: 0px;
+  border-radius: 8px;
   width: 70%;
-  color: black;
-  text-transform: uppercase;
+  color: white;
   cursor: pointer;
+  border: none;
+  transition: all var(--duration-200) var(--easing-standard);
 }
 
 .button-section button:hover {
-  background-color: var(--color-brand);
+  background-color: #df7a96;
+  box-shadow: var(--shadow-2);
+  transform: translateY(-2px);
 }
 
 .form-section {
   display: flex;
   flex-direction: column;
-  margin-top: -11px;
+  margin-top: 0;
   width: 69.7%;
 }
 
@@ -222,7 +225,7 @@ p {
 }
 
 .send-button-container {
-  display: flex; 
+  display: flex;
   justify-content: flex-end;
   margin-top: 10px;
 }
@@ -296,7 +299,9 @@ p {
     display: flex;
     flex-direction: column;
     background-position: right;
-    height: 1200px;
+    height: auto;
+    min-height: auto;
+    padding: 20px 16px;
 
   }
 

@@ -7,6 +7,7 @@ interface PortfolioItem {
   description: string;
   image: string;
   iframeUrl?: string;
+  canvaEmbedUrl?: string;
   buttonColor: string;
   buttonLink: string;
 }
@@ -16,8 +17,9 @@ const portfolioItems: PortfolioItem[] = [
     id: 1,
     title: 'lyrical',
     description: 'Using Spotify and Genius API to transform music streaming through storytelling.',
-    image: '/Portfolio/Lyrical.svg',
+    image: '/Portfolio/screen.webp',
     iframeUrl: 'https://music.shirleyproject.com/',
+    canvaEmbedUrl: 'https://www.canva.com/design/DAG_E3fn3MM/nSqaw_sDZkCLK8kwb0DIOA/view?embed',
     buttonColor: '#a15ef0',
     buttonLink: 'https://music.shirleyproject.com/',
   },
@@ -25,7 +27,7 @@ const portfolioItems: PortfolioItem[] = [
     id: 2,
     title: 'wisest',
     description: 'A solution to indecisiveness. Choosing between job offers? Try our multi-analysis decision maker to see your decision visualized with D3.js.',
-    image: '/Portfolio/Wisest.svg',
+    image: '/Portfolio/screen.webp',
     iframeUrl: 'https://wisests.shirleyproject.com/demo',
     buttonColor: '#d2514d',
     buttonLink: 'https://wisests.shirleyproject.com/',
@@ -34,7 +36,7 @@ const portfolioItems: PortfolioItem[] = [
     id: 3,
     title: 'affirmly',
     description: 'AI journaling that generates thoughts into positive affirmations. Built with content-addressable storage, inverted index search, and Merkle versioning. Check out demo!',
-    image: '/Portfolio/Affirmly.svg',
+    image: '/Portfolio/screen.webp',
     iframeUrl: 'https://affirmly-iota.vercel.app/#/entry/f441e69a0080569f22da7e2138c1e4f7eddb3e5db1131d41c95032d13ec20fdd',
     buttonColor: '#8c97ab',
     buttonLink: 'https://github.com/shirly8/affirmly',
@@ -43,7 +45,7 @@ const portfolioItems: PortfolioItem[] = [
     id: 4,
     title: 'oceanBottle',
     description: 'An interactive web experience that visualizes plastic bottle consumption and transforms awareness into action.',
-    image: '/Portfolio/Overtailored.svg',
+    image: '/Portfolio/screen.webp',
     iframeUrl: 'https://ocean-bottle-nine.vercel.app/',
     buttonColor: '#4a90e2',
     buttonLink: 'https://ocean-bottle-nine.vercel.app/',
@@ -52,7 +54,7 @@ const portfolioItems: PortfolioItem[] = [
     id: 5,
     title: 'servicer',
     description: 'AI-powered platform transforming customer service for service-based businesses.',
-    image: '/Portfolio/Servicer.svg',
+    image: '/Portfolio/screen.webp',
     iframeUrl: 'https://servicer.vercel.app/',
     buttonColor: '#446074',
     buttonLink: 'https://servicer.vercel.app/',
@@ -92,11 +94,11 @@ const PortfolioCarouselComponent = () => {
     <div className="portfolio-carousel">
       <div className="carousel-wrapper">
         {/* Left Click Area */}
-        <div className="carousel-nav carousel-nav-left" onClick={goToPrevious} title="Previous project">
+        <button className="carousel-nav carousel-nav-left" onClick={goToPrevious} aria-label="Previous project">
           <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
-        </div>
+        </button>
 
         {/* SVG Image - Full Screen */}
         <div className={`carousel-content ${currentItem.iframeUrl ? 'has-iframe' : ''} ${isLoaded ? 'loaded' : ''}`}>
@@ -110,29 +112,38 @@ const PortfolioCarouselComponent = () => {
               />
             </div>
           )}
-          <h2 className="project-title" style={{ color: currentItem.buttonColor }}>
-            {currentItem.title}
-          </h2>
-          <p className="project-description">
-            {currentItem.description}
-          </p>
-          <a
-            href={currentItem.buttonLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="visit-button"
-            style={{ backgroundColor: currentItem.buttonColor }}
-          >
-            Visit
-          </a>
+          {currentItem.canvaEmbedUrl && (
+            <div className="canva-embed-wrapper">
+              <div className="canva-embed-inner">
+                <iframe loading="lazy" style={{position: 'absolute', width: '100%', height: '100%', top: 0, left: 0, border: 'none', padding: 0, margin: 0}} src={currentItem.canvaEmbedUrl} allowFullScreen></iframe>
+              </div>
+            </div>
+          )}
+          <div className="project-info-container">
+            <h2 className="project-title" style={{ color: currentItem.buttonColor }}>
+              {currentItem.title}
+            </h2>
+            <p className="project-description">
+              {currentItem.description}
+            </p>
+            <a
+              href={currentItem.buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="visit-button"
+              style={{ backgroundColor: currentItem.buttonColor }}
+            >
+              Visit
+            </a>
+          </div>
         </div>
 
         {/* Right Click Area */}
-        <div className="carousel-nav carousel-nav-right" onClick={goToNext} title="Next project">
+        <button className="carousel-nav carousel-nav-right" onClick={goToNext} aria-label="Next project">
           <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
-        </div>
+        </button>
 
         {/* Indicator Dots */}
         <div className="carousel-indicators">

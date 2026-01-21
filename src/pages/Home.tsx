@@ -182,7 +182,7 @@ function App() {
           <motion.div className="box" variants={boxItem}>
             <h3 className = "boxheading">Programming</h3>
             <p className = "boxtext">
-              TypeScript, JavaScript, Python, Java, Go, C#, C/C++, SQL, HTML/CSS
+              <strong>TypeScript, JavaScript, Python, Java, Go, C#, C/C++, SQL, HTML/CSS</strong>
             </p>
           </motion.div>
           <motion.div className="box" variants={boxItem}>
@@ -214,15 +214,15 @@ function App() {
           <button onClick={handleTalkClick} aria-expanded={showForm} aria-controls="contact-form">Send a message</button>
           {showForm && (
           <form id="contact-form" className="form-section" onSubmit={handleSendClick} noValidate>
-            <label>
+            <label htmlFor="email-input">
               Email:
-              <input type="email" value = {email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your Email Address" required aria-invalid={!isValidEmail(email) && email !== '' ? 'true' : 'false'} />
+              <input id="email-input" type="email" value = {email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your Email Address" required aria-invalid={!isValidEmail(email) && email !== '' ? 'true' : 'false'} aria-describedby={formError ? 'form-error' : undefined} />
             </label>
-            <label>
+            <label htmlFor="message-input">
               Message:
-              <textarea value = {body} onChange={(e) => setBody(e.target.value)} placeholder="Enter your message" required minLength={5}></textarea>
+              <textarea id="message-input" value = {body} onChange={(e) => setBody(e.target.value)} placeholder="Enter your message" required minLength={5}></textarea>
             </label>
-            {formError && <p style={{ color: 'var(--color-brand)', fontSize: '12px', marginTop: '4px' }} role="alert">{formError}</p>}
+            {formError && <p id="form-error" style={{ color: 'var(--color-brand)', fontSize: '12px', marginTop: '4px' }} role="alert">{formError}</p>}
             <div className="send-button-container">
               <button type="submit" className="send-button" disabled={!isValidEmail(email) || body.trim().length < 5}>
                 <img src={send} alt="Send" style={{ width: 20, height: 20 }} />

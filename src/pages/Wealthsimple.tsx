@@ -1,8 +1,13 @@
 import './Wealthsimple.css';
+import { useState } from 'react';
+import ImageModal from '../components/ImageModal';
 
 const WealthsimplePage: React.FC = () => {
+  const [expandedImage, setExpandedImage] = useState<string | null>(null);
+
   return (
     <div className="ws-container">
+      <ImageModal isOpen={expandedImage !== null} imageSrc={expandedImage || ''} onClose={() => setExpandedImage(null)} />
       {/* Left Side */}
       <div className="ws-left-side">
         <div className="ws-heading">
@@ -11,18 +16,18 @@ const WealthsimplePage: React.FC = () => {
         </div>
 
         <h2>2025 - LLM + ML Platform</h2>
-    
-        <h3 className="ws-heading-white">Architecture Consolidation</h3>
+
+        <h3 style={{color: "white"}}>Architecture Consolidation</h3>
         <p>
           Consolidated <strong>four duplicate service wrappers into a single framework</strong>, reducing thousands of lines of duplicate code. This simplified workflows, improved maintainability, and supported <strong>10+ production services</strong> with fewer errors.
         </p>
 
-        <h3 className="ws-heading-white">Service Migration</h3>
+        <h3 style={{color: "white"}}>Service Migration</h3>
         <p>
           Migrated multiple services to a unified routing layer, improving consistency and reducing deployment issues. These changes ensured smooth operation for <strong>all active model endpoints</strong> and accelerated service updates by <strong>20%</strong>.
         </p>
 
-        <h3 className="ws-heading-white">Observability & Reliability</h3>
+        <h3 style={{color: "white"}}>Observability & Reliability</h3>
         <p>
           Improved monitoring by adding <strong>Datadog tags</strong> and creating custom dashboards for real-time service health tracking (visible in the image on the left). Implemented automatic fallback mechanisms to reduce downtime, achieving <strong>99% uptime</strong> across key services.
         </p>
@@ -30,7 +35,7 @@ const WealthsimplePage: React.FC = () => {
 
       {/* Right Side */}
       <div className="ws-right-side">
-        <img src="/wealthsimple_image.png" alt="Wealthsimple Architecture" className="ws-image" />
+        <img src="/wealthsimple_image.png" alt="Wealthsimple Architecture" className="ws-image image-hover-3d" onClick={() => setExpandedImage('/wealthsimple_image.png')} />
       </div>
     </div>
   );
