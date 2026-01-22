@@ -26,7 +26,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 2,
     title: 'wisest',
-    description: 'A solution to indecisiveness. Choosing between job offers? Try our multi-analysis decision maker to see your decision visualized with D3.js.',
+    description: 'A solution to indecisiveness. A multi-criteria decision analysis visualizer with D3.js.',
     image: '/Portfolio/screen.webp',
     iframeUrl: 'https://wisests.shirleyproject.com/demo',
     buttonColor: '#d2514d',
@@ -35,7 +35,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 3,
     title: 'affirmly',
-    description: 'Version control Journals into affirmations',
+    description: 'Journals into affirmations with Merkle versioning.',
     image: '/Portfolio/screen.webp',
     iframeUrl: 'https://affirmly-iota.vercel.app/#/entry/f441e69a0080569f22da7e2138c1e4f7eddb3e5db1131d41c95032d13ec20fdd',
     buttonColor: '#8c97ab',
@@ -53,7 +53,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 5,
     title: 'servicer',
-    description: 'Aspect-Based Sentiment Analysis for service-based businesses.',
+    description: 'Aspect-Based Sentiment Analysis and RAG for service-based businesses.',
     image: '/Portfolio/screen.webp',
     iframeUrl: 'https://servicer.vercel.app/',
     buttonColor: '#446074',
