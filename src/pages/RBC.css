@@ -199,7 +199,7 @@
   }
 
   .rbc-laptop-image {
-    width: 80%; /* smaller on mobile */
+    width: 95%; /* larger on mobile */
     margin-top: 10px;
     display: block !important;
     visibility: visible !important;

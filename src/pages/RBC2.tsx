@@ -6,7 +6,7 @@ const App: React.FC = () => {
   const [expandedImage, setExpandedImage] = useState<string | null>(null);
 
   return (
-    <div className="rbc-container rbc-container-reverse" style = {{paddingBottom: "10px"}}>
+    <div className="rbc-container rbc-container-reverse" style = {{paddingBottom: "50px"}}>
       <ImageModal isOpen={expandedImage !== null} imageSrc={expandedImage || ''} onClose={() => setExpandedImage(null)} />
         {/* Left Side */}
       <div className="rbc-left-side">

@@ -57,7 +57,7 @@
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  background: rgba(0, 0, 0, 0.5);
+  background-color: black;
   padding: 8px 16px;
   border-radius: 6px;
   backdrop-filter: blur(8px);
@@ -81,6 +81,7 @@
   will-change: transform;
   border-radius: 8px;
   border: 8px solid black;
+  background-color: black;
 
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   cursor: pointer;
@@ -154,8 +155,6 @@
 }
 
 .visit-button:hover {
-  transform: translateX(-50%) scale(1.08);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
   color: white;
 }
 
