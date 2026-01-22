@@ -35,7 +35,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 3,
     title: 'affirmly',
-    description: 'AI journaling that generates thoughts into positive affirmations. Built with content-addressable storage, inverted index search, and Merkle versioning. Check out demo!',
+    description: 'Version control Journals into affirmations',
     image: '/Portfolio/screen.webp',
     iframeUrl: 'https://affirmly-iota.vercel.app/#/entry/f441e69a0080569f22da7e2138c1e4f7eddb3e5db1131d41c95032d13ec20fdd',
     buttonColor: '#8c97ab',
@@ -44,7 +44,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 4,
     title: 'oceanBottle',
-    description: 'An interactive web experience that visualizes plastic bottle consumption and transforms awareness into action.',
+    description: 'Immersive 3D experience that visualizes your plastic bottle usage.',
     image: '/Portfolio/screen.webp',
     iframeUrl: 'https://ocean-bottle-nine.vercel.app/',
     buttonColor: '#4a90e2',
@@ -53,7 +53,7 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 5,
     title: 'servicer',
-    description: 'AI-powered platform transforming customer service for service-based businesses.',
+    description: 'Aspect-Based Sentiment Analysis for service-based businesses.',
     image: '/Portfolio/screen.webp',
     iframeUrl: 'https://servicer.vercel.app/',
     buttonColor: '#446074',
