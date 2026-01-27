@@ -34,15 +34,6 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 3,
-    title: 'affirmly',
-    description: 'Journals into affirmations with Merkle versioning.',
-    image: '/Portfolio/screen.webp',
-    iframeUrl: 'https://affirmly-iota.vercel.app/#/entry/f441e69a0080569f22da7e2138c1e4f7eddb3e5db1131d41c95032d13ec20fdd',
-    buttonColor: '#8c97ab',
-    buttonLink: 'https://github.com/shirly8/affirmly',
-  },
-  {
-    id: 4,
     title: 'oceanBottle',
     description: 'Immersive 3D experience that visualizes your plastic bottle usage.',
     image: '/Portfolio/screen.webp',
@@ -51,7 +42,7 @@ const portfolioItems: PortfolioItem[] = [
     buttonLink: 'https://ocean-bottle-nine.vercel.app/',
   },
   {
-    id: 5,
+    id: 4,
     title: 'servicer',
     description: 'Aspect-Based Sentiment Analysis and RAG for service-based businesses.',
     image: '/Portfolio/screen.webp',

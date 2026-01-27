@@ -10,7 +10,6 @@ const TopBar = memo(() => {
           <li><Link to="/">HOME</Link></li>
           <li><Link to="/work">WORK</Link></li>
           <li><Link to="/project">PROJECT</Link></li>
-          <li><a href="https://lyrical-seven.vercel.app/" target="_blank" rel="noopener noreferrer">♫</a></li>
         </ul>
       </nav>
     </header>
