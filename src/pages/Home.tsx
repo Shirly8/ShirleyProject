@@ -208,7 +208,7 @@ function App() {
       
     <div className="left-side">
         <div className="title-section">
-          <h1>Get in touch</h1>
+          <h1>Get in <span className="highlight">touch</span></h1>
         </div>
         <div className="button-section">
           <button onClick={handleTalkClick} aria-expanded={showForm} aria-controls="contact-form">Send a message</button>
